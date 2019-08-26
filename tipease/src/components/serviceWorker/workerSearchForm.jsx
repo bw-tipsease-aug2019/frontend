@@ -41,7 +41,7 @@ function SearchFrm({ errors, touched }) {
 }
 
 const SearchForm = withFormik({
-  mapPropsToValues({ email, password }) {
+  mapPropsToValues({ company, role, name }) {
     return {
       company: company || '',
       role: role || '',

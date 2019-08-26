@@ -28,8 +28,8 @@ const WorkerCard = props => {
         <p>{props.worker.role}</p>
         <p>{props.worker.tagline}</p>
         <p>Employed for<br /><p>{props.worker.yearsWorked} years and {props.worker.monthsWorked} months.</p></p>
-        <div onClick={/* Add tipping finctionality */}>Tip</div>
-        <div onClick={/* Route to /worker/${worker.id} */}>More Info</div>
+        <div onClick={/* Add tipping finctionality, Route to tipping form /tip/${props.worker.id} */}>Tip</div>
+        <div onClick={/* Route to /worker/${props.worker.id} the worker page for this worker */}>More Info</div>
       </div>
     </div>
   );
