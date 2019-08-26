@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
 import authReducer from './authReducer';
-import renameReducer from './renameReducer';
+import tipReducer from './tipReducer';
 
 export default combineReducers({
 	authReducer,
-    renameReducer
+    tipReducer
 });
