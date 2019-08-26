@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { doSignIn } from "../../store/actions/authActions";
+import { Redirect } from "react-router-dom";
 
 function LogFrm({ errors, touched }) {
   const token = localStorage.getItem("token");
@@ -42,9 +43,9 @@ const LoginForm = withFormik({
   }),
 
   handleSubmit(values, formikBag) {
-    // console.log(formikBag);
     formikBag.props.doSignIn(values).then(() => {
-      formikBag.props.history.push("/protected");
+      // resetForm();
+      return <Redirect to="/" />;
     });
   }
 })(LogFrm);
