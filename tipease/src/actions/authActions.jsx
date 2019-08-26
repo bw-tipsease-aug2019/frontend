@@ -1,6 +1,25 @@
 import axiosWithAuth from '../utils/axiosWithAuth'
 import { types } from './index'
 
+export const doCreateAccount = newUserDetails => dispatch =>{
+    dispatch({ type: types.CREATE_USER_START});
+    return axiosWithAuth()
+    .post('needsEndpoint', newUserDetails)
+    .then(
+      res => {
+        dispatch({ type: types.CREATE_USER_SUCCESS, payload: {message: 'User was created successfully!'}});
+        console.log(res)
+      }
+    )
+    .catch(
+      err => {
+        dispatch({type: types.CREATE_USER_FAIL, payload: err})
+         console.log(err.response)
+      } 
+    )
+  
+  };
+  
 export const doSignIn = credentials => dispatch => {
     dispatch({ type: types.LOGIN_START })
     return axiosWithAuth()
@@ -21,24 +40,6 @@ export const doSignIn = credentials => dispatch => {
         )
 }
 
-export const doCreateAccount = newUserDetails => dispatch =>{
-    dispatch({ type: types.CREATE_USER_START});
-    return axiosWithAuth()
-    .post('needsEndpoint', newUserDetails)
-    .then(
-      res => {
-        dispatch({ type: types.CREATE_USER_SUCCESS, payload: {message: 'User was created successfully!'}});
-        console.log(res)
-      }
-    )
-    .catch(
-      err => {
-        dispatch({type: types.CREATE_USER_FAIL, payload: err})
-         console.log(err.response)
-      } 
-    )
-  
-  };
   
   export const doCreateProfile = newProfileDetails => dispatch =>{
     dispatch({ type: types.CREATE_PROFILE_START});
