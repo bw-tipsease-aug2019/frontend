@@ -1,4 +1,4 @@
-import axiosWithAuth from '../utils/axiosWithAuth'
+import axiosWithAuth from '../../utils/axiosWithAuth'
 import { types } from './index'
 
 export const doCreateAccount = newUserDetails => dispatch =>{
