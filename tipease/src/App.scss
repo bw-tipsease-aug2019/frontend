@@ -1,0 +1,17 @@
+.App {
+  text-align: center;
+}
+
+.tip-card-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  width: 90%;
+  margin: 0 auto;
+
+  .tip-card {
+    border: 1px solid #000;
+    border-radius: 2px;
+    max-width: 250px;
+    margin: 1rem;
+  }
+}

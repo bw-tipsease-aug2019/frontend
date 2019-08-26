@@ -3,7 +3,7 @@ import TipCard from "../Tipper/TipCard";
 
 export default function TipList(props) {
   return (
-    <div className="tip-list">
+    <div className="tip-card-wrapper">
       {/* props.tips.map() */}
       <TipCard />
       <TipCard />

@@ -1,7 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
 
-import "./App.css";
+import "./App.scss";
 
 import Login from "./components/forms/Login";
 import NavBar from "./components/navigation/NavBar";
