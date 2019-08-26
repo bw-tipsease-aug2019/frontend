@@ -26,7 +26,8 @@ const WorkerList = props => {
     }
 
     if(filter.name){
-      filteredWorkers = filteredWorkers.filter(worker=>worker.name.includes(filter.name));
+      let regex = new RegExp(filter.name,'i');
+      filteredWorkers = filteredWorkers.filter(worker=>regex.test(worker.name));
     }
   }
 
