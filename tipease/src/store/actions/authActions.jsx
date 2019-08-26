@@ -1,10 +1,10 @@
-import axiosWithAuth from '../utils/axiosWithAuth'
+import axiosWithAuth from '../../utils/axiosWithAuth'
 import { types } from './index'
 
 export const doCreateAccount = newUserDetails => dispatch =>{
     dispatch({ type: types.CREATE_USER_START});
     return axiosWithAuth()
-    .post('needsEndpoint', newUserDetails)
+    .post('/auth/register', newUserDetails)
     .then(
       res => {
         dispatch({ type: types.CREATE_USER_SUCCESS, payload: {message: 'User was created successfully!'}});
@@ -23,12 +23,12 @@ export const doCreateAccount = newUserDetails => dispatch =>{
 export const doSignIn = credentials => dispatch => {
     dispatch({ type: types.LOGIN_START })
     return axiosWithAuth()
-        .post('needsEndpoint', credentials)
+        .post('/auth/login', credentials)
         .then(
             res =>{
                 console.log(res)
                 //set token 
-                // localStorage.setItem('token', (res.data.token))
+                localStorage.setItem('token', (res.data))
                 dispatch ({ type: types.LOGIN_SUCCESS, payload: res.data})
             }
         )
