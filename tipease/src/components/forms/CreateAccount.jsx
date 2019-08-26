@@ -1,15 +1,14 @@
 import React from "react";
-import {connect} from 'react-redux';
+import { connect } from "react-redux";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
-import { doCreateAccount } from '../../store/actions/authActions'
+import { doCreateAccount } from "../../store/actions/authActions";
 import { Redirect } from "react-router-dom";
-
 
 function RegFrm({ values, errors, touched }) {
   return (
     <div className="form-card">
-    <h1>Create an Account</h1>
+      <h1>Create an Account</h1>
       <Form className="ui form">
         <div className="field">
             {touched.email && errors.email && <p>{errors.email}</p>}
@@ -46,15 +45,8 @@ function RegFrm({ values, errors, touched }) {
   );
 }
 
-
-
 const RegistrationForm = withFormik({
-  mapPropsToValues({
-    email,
-    password,
-    cPassword,
-    tos
-  }) {
+  mapPropsToValues({ email, password, cPassword, tos }) {
     return {
       email: email || "",
       password: password || "",
@@ -63,8 +55,6 @@ const RegistrationForm = withFormik({
     };
   },
   validationSchema: Yup.object().shape({
-    firstName: Yup.string().required("is required"),
-    lastName: Yup.string().required("is required"),
     email: Yup.string()
       .email("is not valid")
       .required("is required"),
@@ -77,17 +67,20 @@ const RegistrationForm = withFormik({
     )
   }),
 
-handleSubmit(values, formikBag) {
-  if (values.tos === false) {
-    formikBag.setErrors({ tos: "Please Accept the Terms of Service" });
-  } else {
-  formikBag.props.doCreateAccount(values).then(() => {
-    // resetForm();
-    return <Redirect to="/" />;
-  });
-}}
+  handleSubmit(values, formikBag) {
+    if (values.email === "alreadytaken@atb.dev") {
+      formikBag.setErrors({ email: "That email is already taken" });
+    } else if (values.tos === false) {
+      formikBag.setErrors({ tos: "Please Accept the Terms of Service" });
+    } else {
+      formikBag.props.doCreateAccount(values).then(() => {
+        return <Redirect to="/protected" />;
+      });
+    }
+  }
 })(RegFrm);
 
-
-
-export default connect(null, {doCreateAccount})(RegistrationForm);
+export default connect(
+  null,
+  { doCreateAccount }
+)(RegistrationForm);
