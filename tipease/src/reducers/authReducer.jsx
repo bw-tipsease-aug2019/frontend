@@ -1,5 +1,5 @@
 import { types } from "../actions";
-import jwt_decode from "jwt-decode";
+// import jwt_decode from "jwt_decode";
 
 const initialState = {
   token: "",
@@ -190,13 +190,13 @@ export default (state = initialState, action) => {
       };
     //WELCOME BACK
     case types.WELCOME_BACK:
-      const wbUser = jwt_decode(payload);
+      // const wbUser = jwt_decode(payload);
       return {
         ...state,
         isLoading: false,
         errors: null,
         isAuth: true,
-        user: wbUser,
+        // user: wbUser,
         isSuccess: false
       };
     default:
