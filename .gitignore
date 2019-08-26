@@ -1,2 +1,6 @@
 
 *.code-workspace
+
+yarn.lock
+
+node_modules/.yarn-integrity
