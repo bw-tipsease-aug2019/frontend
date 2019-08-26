@@ -1,2 +1,8 @@
 
 *.code-workspace
+
+yarn.lock
+
+node_modules/.yarn-integrity
+
+tipease/src/.idea/
