@@ -5,11 +5,19 @@
 /
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 import React from "react";
+import { Route, Link } from "react-router-dom";
+import TipList from "./TipList";
 
 export default function WorkerPage() {
   return (
-    <div className="worker-page">
-      <h1>Worker Page</h1>
-    </div>
+    <>
+      <nav>
+        <Link to="/worker/tips">Tips</Link>
+      </nav>
+      <div className="worker-page">
+        <h1>Worker Page</h1>
+        <Route exact path="/worker/tips" component={TipList} />
+      </div>
+    </>
   );
 }
