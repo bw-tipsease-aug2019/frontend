@@ -40,6 +40,26 @@ export const doCreateAccount = newUserDetails => dispatch =>{
   
   };
   
+  export const doCreateProfile = newProfileDetails => dispatch =>{
+    dispatch({ type: types.CREATE_PROFILE_START});
+    return axiosWithAuth()
+    .post('endpointhere', newProfileDetails)
+    .then(
+      res => {
+        dispatch({ type: types.CREATE_PROFILE_SUCCESS, payload: {message: 'Profile was created successfully!'}});
+        console.log(res)
+      }
+    )
+    .catch(
+      err => {
+        dispatch({type: types.CREATE_PROFILE_FAIL, payload: err})
+         console.log(err.response)
+      } 
+    )
+  
+  };
   export const doSignOut = () => dispatch =>{
     dispatch({ type: types.LOGOUT_START});
   };
+
+  
