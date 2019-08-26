@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from 'react-redux';
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
-import { doCreateAccount } from '../actions/authActions'
+import { doCreateAccount } from '../../store/actions/authActions'
 
 
 function RegFrm({ values, errors, touched }) {

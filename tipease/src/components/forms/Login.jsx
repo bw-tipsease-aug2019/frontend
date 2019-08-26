@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
-import { doSignIn } from "../../actions/authActions";
+import { doSignIn } from "../../store/actions/authActions"
 
 function LogFrm({ errors, touched }) {
   const token = localStorage.getItem("token");
