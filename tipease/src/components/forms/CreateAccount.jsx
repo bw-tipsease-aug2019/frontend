@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { doCreateAccount } from '../../store/actions/authActions'
+import { Redirect } from "react-router-dom";
 
 
 function RegFrm({ values, errors, touched }) {
@@ -76,21 +77,16 @@ const RegistrationForm = withFormik({
     )
   }),
 
-
-
-  handleSubmit(values, formikBag) {
-     if (values.tos === false) {
-      formikBag.setErrors({ tos: "Please Accept the Terms of Service" });
-    } else {
-      
-      formikBag.props.doCreateAccount(values)
-       .then(() => {formikBag.props.props.history.push("/login")});
-      console.log(values);
-
-    }
-  }
+handleSubmit(values, formikBag) {
+  if (values.tos === false) {
+    formikBag.setErrors({ tos: "Please Accept the Terms of Service" });
+  } else {
+  formikBag.props.doCreateAccount(values).then(() => {
+    // resetForm();
+    return <Redirect to="/" />;
+  });
+}}
 })(RegFrm);
-
 
 
 
