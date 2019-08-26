@@ -8,28 +8,30 @@
 import React, {useEffect} from 'react';
 import SearchForm from './workerSearchForm';
 import { useDispatch, useSelector } from 'react-redux';
-import {getWorkers} from '../actions/index';
+//import {getWorkers} from '../actions/workerActions';
 
 const WorkerList = props => {
   const workers = useSelector(state => state.workers);
   const filter = useSelector(state => state.filter);
   const dispatch = useDispatch();
 
-  let filteredWorkers = [...workers];
-  if(filter.company){
-    filteredWorkers = filteredWorkers.filter(worker=>worker.company===filter.company);
-  }
+  let filteredWorkers = workers ? [...workers] : [];
+  if(filter){
+    if(filter.company){
+      filteredWorkers = filteredWorkers.filter(worker=>worker.company===filter.company);
+    }
 
-  if(filter.role){
-    filteredWorkers = filteredWorkers.filter(worker=>worker.role===filter.role);
-  }
+    if(filter.role){
+      filteredWorkers = filteredWorkers.filter(worker=>worker.role===filter.role);
+    }
 
-  if(filter.name){
-    filteredWorkers = filteredWorkers.filter(worker=>worker.name.includes(filter.name));
+    if(filter.name){
+      filteredWorkers = filteredWorkers.filter(worker=>worker.name.includes(filter.name));
+    }
   }
 
   useEffect(()=>{
-    dispatch(getWorkers());
+    //dispatch(getWorkers());
   },[]);
 
   return (
