@@ -8,3 +8,14 @@
 /          -When logged in:
 /             * Log out button
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+import React from 'react';
+
+const NavBar = props =>{
+  return(
+    <>
+    </>
+  );
+};
+
+export default NavBar;
