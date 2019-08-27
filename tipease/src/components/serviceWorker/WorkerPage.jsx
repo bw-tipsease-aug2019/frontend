@@ -4,20 +4,31 @@
 /        display more detailed information:
 /
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-import React from "react";
-import { Route, Link } from "react-router-dom";
-import TipList from "./TipList";
+import React,{useEffect} from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import {getWorker} from '../../store/actions/workerActions'
 
-export default function WorkerPage() {
+const WorkerPage = (props) => {
+  const worker = useSelector(state=>state.workerReducer.currentWorker);
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    dispatch(getWorker(props.match.params.id));
+  },[]);
+
   return (
     <>
-      <nav>
-        <Link to="/worker/tips">Tips</Link>
-      </nav>
       <div className="worker-page">
-        <h1>Worker Page</h1>
-        <Route exact path="/worker/tips" component={TipList} />
+        <h1>{`${worker.name.first} ${worker.name.last}'s Page`}</h1>
+        <div style={{ background: `url(${worker.thumbnail})` }} />
+        <p>{worker.role}</p>
+        <p>{worker.tagline}</p>
+        <p>Employed for</p>
+        <p>{worker.durationEmployed.year} years and {worker.durationEmployed.month} months.</p>
+        <h2>Tips: </h2>
       </div>
     </>
   );
 }
+
+export default WorkerPage;

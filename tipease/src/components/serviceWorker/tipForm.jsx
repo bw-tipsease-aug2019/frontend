@@ -1,24 +1,33 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 
-import { useDispatch } from 'react-redux';
-//import {tipWorker} from '../actions/workerActions'; 
+import { useSelector, connect } from 'react-redux';
 
-const dispatch = useDispatch();
+import {getWorker} from '../../store/actions/workerActions'
 
-function TipFrm({ errors, touched }) {
+function TipFrm(props) {
+  const worker = useSelector(state=>state.workerReducer.currentWorker);
+  console.log('curWorker', worker);
+  useEffect(()=>{
+    props.getWorker(props.match.params.id);
+  },[]);
   return (
     <div className="form-card">
-      <h1>Login</h1>
+      {worker.name?
+        <h1>Tipping {`${worker.name.first} ${worker.name.last}`}</h1> :
+        <></>  
+      }
+      
       <Form className="ui form">
         <div className="field">
-          {touched.amount && errors.amount && <p>{errors.amount}</p>}
-          <Field type="number" name="amount" placeholder="$5.00" />
+          {props.touched.amount && props.errors.amount && <p>{props.errors.amount}</p>}
+          <label htmlFor='amount'>Amount: </label>
+          <Field type="number" name="amount" id='amount' placeholder="$5.00" />
         </div>
         <div className="field">
-          {touched.comment && errors.comment && <p>{errors.comment}</p>}
-          <Field type="text" name="comment" placeholder="Add a comment" />
+        <label htmlFor='comment'>Leave a comment: </label>
+          <Field type="text" name="comment" id="comment" placeholder="Add a comment" />
         </div>
         <button className="ui button" type="submit">
           Tip
@@ -50,4 +59,7 @@ const TipForm = withFormik({
   }
 })(TipFrm);
 
-export default TipForm;
+export default connect(
+  null,
+  { getWorker }
+)(TipForm);

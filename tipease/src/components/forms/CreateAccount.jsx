@@ -84,12 +84,14 @@ const RegistrationForm = withFormik({
   }),
 
   handleSubmit(values, formikBag) {
+    console.log('supah test ')
     if (values.tos === false) {
       formikBag.setErrors({ tos: "Please Accept the Terms of Service" });
     } else {
-      formikBag.props.doCreateAccount(values).then(() => {
-        formikBag.props.history.push("/login");
-      });
+      formikBag.props.doCreateAccount(values)
+      //.then(() => {
+        //formikBag.props.history.push("/protected");
+     // });
       console.log(values);
     }
   }

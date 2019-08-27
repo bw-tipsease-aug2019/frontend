@@ -6,48 +6,59 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 import React, {useEffect} from 'react';
-import SearchForm from './workerSearchForm';
+import SearchForm from './WorkerSearchForm';
 import { useDispatch, useSelector } from 'react-redux';
-//import {getWorkers} from '../actions/workerActions';
+import WorkerCard from './WorkerCard';
+import {getWorkers} from '../../store/actions/workerActions';
+
 
 const WorkerList = props => {
-  const workers = useSelector(state => state.workers);
-  const filter = useSelector(state => state.filter);
+  const workers = useSelector(state => state.workerReducer.workers);
+  const filter = useSelector(state => state.workerReducer.filter);
   const dispatch = useDispatch();
-
-  let filteredWorkers = workers ? [...workers] : [];
+  let companyNames =[];
+  let filteredWorkers = [];
+  if(workers){
+    filteredWorkers = [...workers];
+    companyNames = [...new Set(workers.map(worker => worker.company))];
+  }
   if(filter){
-    if(filter.company){
+    if(filter.company && filter.company!=='select'){
       filteredWorkers = filteredWorkers.filter(worker=>worker.company===filter.company);
     }
 
-    if(filter.role){
+    if(filter.role && filter.role!=='select'){
       filteredWorkers = filteredWorkers.filter(worker=>worker.role===filter.role);
     }
 
     if(filter.name){
-      filteredWorkers = filteredWorkers.filter(worker=>worker.name.includes(filter.name));
+      filteredWorkers = filteredWorkers.filter(worker=>{
+        const fullName = `${worker.name.first} ${worker.name.last}`
+        return (fullName.search(new RegExp(filter.name, "i")) === 0);
+      });
     }
   }
 
   useEffect(()=>{
-    //dispatch(getWorkers());
+    dispatch(getWorkers());
   },[]);
 
   return (
+    <>
       <div className='searchParameters'>
-        <SearchForm />
+        <SearchForm companyNames={companyNames}/>
       </div>
 
       <div className='workersGrid'>
         {filteredWorkers.map(worker => {
           return (
-            <div className='workersGrid-item'>
-              <WorkerCard key={worker.id} worker={worker} />
+            <div key={worker.id} className='workersGrid-item'>
+              <WorkerCard key={worker.id} worker={worker} redirect={props.history.push}/>
             </div>
           );
         })}
       </div>
+    </>
   );
 }
 

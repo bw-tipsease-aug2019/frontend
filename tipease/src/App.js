@@ -8,6 +8,8 @@ import NavBar from "./components/navigation/NavBar";
 import CreateAccountPage from "./components/CreateAccountPage";
 import TipperPage from "./components/Tipper/TipperPage";
 import WorkerPage from "./components/serviceWorker/WorkerPage";
+import WorkerList from "./components/serviceWorker/WorkerList";
+import TipForm from './components/serviceWorker/TipForm';
 // import Worker from "./components/serviceWorker/worker";
 
 function App() {
@@ -15,10 +17,12 @@ function App() {
     <div className="App">
       <NavBar />
       <h1>Hello Tipease</h1>
-      <Route exact path="/" component={CreateAccountPage} />
-      <Route path="/protected/" component={Login} />
+      <Route exact path="/" component={WorkerList} />
+      <Route path="/register" component={CreateAccountPage} />
+      <Route path="/protected" component={Login} />
       <Route path="/tipper" component={TipperPage} />
-      <Route path="/worker" component={WorkerPage} />
+      <Route path="/worker/:id" component={WorkerPage} />
+      <Route path="/tip/:id" component={TipForm} />
     </div>
   );
 }
