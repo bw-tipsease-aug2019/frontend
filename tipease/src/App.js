@@ -8,7 +8,6 @@ import './App.scss';
 import Login from "./components/forms/Login";
 import NavBar from "./components/navigation/NavBar";
 import CreateAccountPage from "./components/CreateAccountPage";
-import TipperPage from "./components/Tipper/TipperPage";
 import WorkerPage from "./components/serviceWorker/WorkerPage";
 import WorkerList from "./components/serviceWorker/WorkerList";
 import TipForm from './components/serviceWorker/tipForm';
@@ -22,9 +21,9 @@ function App() {
       <Route exact path="/" component={WorkerList} />
       <Route path="/register" component={CreateAccountPage} />
       <Route path="/login" component={Login} />
-      <PrivateRoute path="/tipper" component={TipperPage} />
       <Route path="/worker/:id" component={WorkerPage} />
       <Route path="/tip/:id" component={TipForm} />
+      
     </div>
   );
 }
