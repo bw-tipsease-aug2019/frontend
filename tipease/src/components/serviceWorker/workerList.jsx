@@ -17,9 +17,11 @@ const WorkerList = props => {
   const filter = useSelector(state => state.workerReducer.filter);
   const dispatch = useDispatch();
 
+  let companyNames=[];
   let filteredWorkers = [];
   if(workers){
     filteredWorkers = [...workers];
+    companyNames = [...new Set(workers.map(worker => worker.company))];
   }
   if(filter){
     if(filter.company && filter.company!=='select'){
@@ -45,7 +47,7 @@ const WorkerList = props => {
   return (
     <>
       <div className='searchParameters'>
-        <SearchForm />
+        <SearchForm companyNames={companyNames}/>
       </div>
 
       <div className='workersGrid'>

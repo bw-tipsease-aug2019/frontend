@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { setFilter } from '../../store/actions/workerActions';
 
 
-function SearchFrm({ errors, touched }) {
+function SearchFrm(props) {
   const dispatch = useDispatch();
   const [values, setValues] = useState({
     company: '',
@@ -31,6 +31,11 @@ function SearchFrm({ errors, touched }) {
         <div className="field">
           <select name="company" onChange={handleChange}>
             <option value="select" defaultValue>Select A Company...</option>
+            {props.companyNames.map(name=>{
+              return (
+                <option value={`${name}`}>{`${name}`}</option>
+              );
+            })}
           </select>
         </div>
         <div className="field">
