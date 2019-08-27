@@ -4,32 +4,39 @@
 /        display more detailed information:
 /
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-import React,{useEffect} from "react";
-import { useSelector, useDispatch } from 'react-redux';
-import {getWorker} from '../../store/actions/workerActions'
-import '../../App.scss'
-const WorkerPage = (props) => {
-  const worker = useSelector(state=>state.workerReducer.currentWorker);
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getWorker } from "../../store/actions/workerActions";
+import "../../App.scss";
+const WorkerPage = props => {
+  const worker = useSelector(state => state.workerReducer.currentWorker);
   const dispatch = useDispatch();
 
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(getWorker(props.match.params.id));
-  },[]);
+  }, []);
 
   return (
     <>
       <div className="worker-page">
         <h1>{`${worker.name.first} ${worker.name.last}'s Page`}</h1>
-        <img className='worker-thumbnail' alt='Worker Photo Here' src={worker.thumbnail} />
+        <img
+          className="worker-thumbnail"
+          alt="Worker Photo Here"
+          src={worker.thumbnail}
+        />
         <h3>{worker.company}</h3>
         <p>{worker.role}</p>
         <p>{worker.tagline}</p>
         <p>Employed for</p>
-        <p>{worker.durationEmployed.year} years and {worker.durationEmployed.month} months.</p>
+        <p>
+          {worker.durationEmployed.year} years and{" "}
+          {worker.durationEmployed.month} months.
+        </p>
         <h2>Tips: </h2>
       </div>
     </>
   );
-}
+};
 
 export default WorkerPage;
