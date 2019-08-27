@@ -49,10 +49,10 @@ const WorkerList = props => {
         <SearchForm companyNames={companyNames}/>
       </div>
 
-      <div className='workersGrid'>
+      <div className='workers-grid'>
         {filteredWorkers.map(worker => {
           return (
-            <div key={worker.id} className='workersGrid-item'>
+            <div key={worker.id} className='workers-grid-item'>
               <WorkerCard key={worker.id} worker={worker} redirect={props.history.push}/>
             </div>
           );

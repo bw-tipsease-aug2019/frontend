@@ -1,3 +1,16 @@
+// Variables
+$dark-purple: #8e40ce;
+$light-purple: #f1e0ff;
+
+$dark-green: #39a851;
+$light-green: #e2ffe9;
+
+$dark-pink: #f76cad;
+$light-pink: #ffddea;
+
+$dark-blue: #4286f4;
+$light-blue: #d8e7ff;
+
 .App {
   text-align: center;
   width: 75%;
@@ -6,7 +19,7 @@
 
 .tip-card-wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   width: 90%;
   margin: 0 auto;
 
@@ -15,13 +28,29 @@
     border-radius: 2px;
     max-width: 250px;
     margin: 1rem;
+    padding: 1rem;
   }
 }
 
-.worker-card {
-  border: 1px solid black;
-  width: 45%;
-  margin: 1rem auto;
-  border-radius: 1%;
-  padding: 1rem;
+.workers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  width: 90%;
+  margin: 0 auto;
+
+  .workers-grid-item {
+    border: 1px solid #000;
+    border-radius: 2px;
+    max-width: 250px;
+    margin: 1rem;
+    padding: 1rem;
+  }
 }
+
+// .worker-card {
+//   border: 1px solid black;
+//   width: 45%;
+//   margin: 1rem auto;
+//   border-radius: 1%;
+//   padding: 1rem;
+// }
