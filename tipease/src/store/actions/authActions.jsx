@@ -30,6 +30,7 @@ export const doSignIn = credentials => dispatch => {
                 console.log(res)
                 //set token 
                 localStorage.setItem('token', (res.data.token))
+                localStorage.setItem('serviceWorker', (res.data.isServiceWorker))
                 dispatch ({ type: types.LOGIN_SUCCESS, payload: res.data})
             }
         )
@@ -37,6 +38,7 @@ export const doSignIn = credentials => dispatch => {
             err => {
                 console.log(err.response)
                 localStorage.removeItem('token')
+                localStorage.removeItem('serviceWorker')
                 dispatch({ type: types.LOGIN_FAIL, payload: err.response})
             }
         )
@@ -123,6 +125,8 @@ export const doSignIn = credentials => dispatch => {
   export const doSignOut = () => dispatch =>{
     dispatch({ type: types.LOGOUT_START});
     localStorage.removeItem('token')
+    localStorage.removeItem('serviceWorker')
+
   };
 
   export const doWelcomeBack = token => {
