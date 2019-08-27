@@ -20,7 +20,6 @@ function App() {
       <Route exact path="/" component={WorkerList} />
       <Route path="/register" component={CreateAccountPage} />
       <Route path="/login" component={Login} />
-      <PrivateRoute path="/tipper" component={TipperPage} />
       <Route path="/worker/:id" component={WorkerPage} />
       <Route path="/tip/:id" component={TipForm} />
     </div>

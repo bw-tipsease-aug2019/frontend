@@ -16,8 +16,6 @@ export default function NavBar() {
     <div>
       <nav>
         <Link to="/">Home</Link>
-        <Link to="/tipper">Tipper</Link>
-        <Link to="/worker">Worker</Link>
       </nav>
     </div>
   );
