@@ -7,7 +7,7 @@ export default function CreateAccountPage(props) {
     return (
         <div className="create-account-page">
             <CreateAccountForm props={props} />
-            <p>Already a member? <Link to='/protected'>Sign in</Link></p>
+            <p>Already a member? <Link to='/login'>Sign in</Link></p>
         </div>
     )
 }
