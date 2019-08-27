@@ -7,7 +7,7 @@
 import React,{useEffect} from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import {getWorker} from '../../store/actions/workerActions'
-
+import '../../App.scss'
 const WorkerPage = (props) => {
   const worker = useSelector(state=>state.workerReducer.currentWorker);
   const dispatch = useDispatch();

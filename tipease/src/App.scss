@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  width: 75%;
+  margin: 0 auto;
 }
 
 .tip-card-wrapper {
@@ -14,4 +16,12 @@
     max-width: 250px;
     margin: 1rem;
   }
+}
+
+.worker-card {
+  border: 1px solid black;
+  width: 45%;
+  margin: 1rem auto;
+  border-radius: 1%;
+  padding: 1rem;
 }
