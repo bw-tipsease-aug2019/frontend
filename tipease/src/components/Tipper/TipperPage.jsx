@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Route } from "react-router-dom";
-import { Link } from "react-router-dom";
 
 const TipperPage = () => {
   const [search, setSearch] = useState("");
@@ -13,8 +12,6 @@ const TipperPage = () => {
     <>
       <div>
         <h1>Tipper Page</h1>
-        {/* <TipList tips={} /> */}
-        <Route path="/tipper/tips" />
 
         <form>
           <input
