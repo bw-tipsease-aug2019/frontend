@@ -12,9 +12,7 @@ const TipperPage = () => {
     <>
       <div>
         <h1>Tipper Page</h1>
-        {/* <TipList tips={} /> */}
-        <Route path="/tipper/tips" />
-
+      
         <form className='ui form'>
           <input
             type="text"
