@@ -31,9 +31,9 @@ function SearchFrm(props) {
         <div className="field">
           <select name="company" onChange={handleChange}>
             <option value="select" defaultValue>Select A Company...</option>
-            {props.companyNames.map(name=>{
+            {props.companyNames.map((name,i)=>{
               return (
-                <option value={`${name}`}>{`${name}`}</option>
+                <option key={i} value={`${name}`}>{`${name}`}</option>
               );
             })}
           </select>
