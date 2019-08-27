@@ -15,7 +15,7 @@ const TipperPage = () => {
         {/* <TipList tips={} /> */}
         <Route path="/tipper/tips" />
 
-        <form>
+        <form className='ui form'>
           <input
             type="text"
             placeholder="Enter Worker's Name"
