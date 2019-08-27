@@ -21,6 +21,7 @@ const WorkerPage = (props) => {
       <div className="worker-page">
         <h1>{`${worker.name.first} ${worker.name.last}'s Page`}</h1>
         <img className='worker-thumbnail' alt='Worker Photo Here' src={worker.thumbnail} />
+        <h3>{worker.company}</h3>
         <p>{worker.role}</p>
         <p>{worker.tagline}</p>
         <p>Employed for</p>
