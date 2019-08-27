@@ -12,7 +12,6 @@ const TipperPage = () => {
     <>
       <div>
         <h1>Tipper Page</h1>
-      
         <form className='ui form'>
           <input
             type="text"
