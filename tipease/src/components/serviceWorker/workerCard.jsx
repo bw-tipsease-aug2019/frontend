@@ -27,7 +27,8 @@ const WorkerCard = props => {
       <div>
         <p>{props.worker.role}</p>
         <p>{props.worker.tagline}</p>
-        <p>Employed for<br /><p>{props.worker.durationEmployed.year} years and {props.worker.durationEmployed.month} months.</p></p>
+        <p>Employed for</p>
+        <p>{props.worker.durationEmployed.year} years and {props.worker.durationEmployed.month} months.</p>
         <div onClick={()=>{/* Add tipping finctionality, Route to tipping form /tip/${props.worker.id} */}}>Tip</div>
         <div onClick={()=>{/* Route to /worker/${props.worker.id} the worker page for this worker */}}>More Info</div>
         <div onClick={()=>{/*dispatch(removeWorker())*/}}>DELETE</div>

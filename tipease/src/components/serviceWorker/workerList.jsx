@@ -51,7 +51,7 @@ const WorkerList = props => {
       <div className='workersGrid'>
         {filteredWorkers.map(worker => {
           return (
-            <div className='workersGrid-item'>
+            <div key={worker.id} className='workersGrid-item'>
               <WorkerCard key={worker.id} worker={worker} />
             </div>
           );

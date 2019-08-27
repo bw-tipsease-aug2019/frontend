@@ -17,9 +17,10 @@ function App() {
       <NavBar />
       <h1>Hello Tipease</h1>
       <Route exact path="/" component={WorkerList} />
+      <Route path="/register" component={CreateAccountPage} />
       <Route path="/protected" component={Login} />
       <Route path="/tipper" component={TipperPage} />
-      <Route path="/worker" component={WorkerPage} />
+      <Route path="/worker/:id" component={WorkerPage} />
     </div>
   );
 }

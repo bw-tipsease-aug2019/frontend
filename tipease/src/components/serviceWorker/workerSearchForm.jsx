@@ -30,12 +30,12 @@ function SearchFrm({ errors, touched }) {
       <form className="ui form" onSubmit={handleSubmit}>
         <div className="field">
           <select name="company" onChange={handleChange}>
-            <option value="select" selected>Select A Company...</option>
+            <option value="select" defaultValue>Select A Company...</option>
           </select>
         </div>
         <div className="field">
           <select name="role" onChange={handleChange}>
-            <option value="select" selected>Select A Role...</option>
+            <option value="select" defaultValue>Select A Role...</option>
             <option value="Server">Server</option>
             <option value="Bellhop">Bellhop</option>
             <option value="Valet">Valet</option>

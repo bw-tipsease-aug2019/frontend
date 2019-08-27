@@ -3,6 +3,7 @@ import { types } from './index'
 
 export const doCreateAccount = newUserDetails => dispatch =>{
     dispatch({ type: types.CREATE_USER_START});
+    console.log('testingu');
     return axiosWithAuth()
     .post('/auth/register', newUserDetails)
     .then(
