@@ -22,7 +22,7 @@ const WorkerCard = props => {
   return (
     <div className='worker-card'>
       <h2>{props.worker.name.first} {props.worker.name.last}</h2>
-      <div style={{ background: `url(${props.worker.thumbnail})` }} />
+      <img className='worker-thumbnail' alt='Worker Photo Here' src={props.worker.thumbnail} />
       <div>
         <p>{props.worker.role}</p>
         <p>{props.worker.tagline}</p>
