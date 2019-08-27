@@ -72,7 +72,7 @@ const WorkerCard = props => {
               props.redirect(`/tip/${props.worker.id}`);
             }}
           >
-            Tip
+
           </div>
 
           <div
