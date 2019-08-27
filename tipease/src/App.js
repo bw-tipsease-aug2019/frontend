@@ -11,6 +11,7 @@ import CreateAccountPage from "./components/CreateAccountPage";
 import WorkerPage from "./components/serviceWorker/WorkerPage";
 import WorkerList from "./components/serviceWorker/WorkerList";
 import TipForm from './components/serviceWorker/tipForm';
+import TipList from './components/serviceWorker/TipList'
 // import Worker from "./components/serviceWorker/worker";
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
       <Route path="/login" component={Login} />
       <Route path="/worker/:id" component={WorkerPage} />
       <Route path="/tip/:id" component={TipForm} />
-      
+      <PrivateRoute path='/workers/tips' component={TipList} />
     </div>
   );
 }
