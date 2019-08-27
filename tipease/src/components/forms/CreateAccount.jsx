@@ -6,7 +6,7 @@ import { doCreateAccount } from "../../store/actions/authActions";
 import { Redirect } from "react-router-dom";
 
 function RegFrm({ values, errors, touched }) {
-  return (
+    return (
     <div className="form-card">
       <h1>Create an Account</h1>
       <Form className="ui form">
@@ -27,10 +27,10 @@ function RegFrm({ values, errors, touched }) {
             />
         </div>
         <div className="field">
-          <label htmlFor="tos">
-            {touched.tos && errors.tos && <p>{errors.tos}</p>}
-            <Field type="checkbox" name="tos" checked={values.tos} />
-            Accept TOS
+          <label htmlFor="isServiceWorker">
+            Check if you are a service worker
+            {touched.isServiceWorker && errors.isServiceWorker && <p>{errors.isServiceWorker}</p>}
+            <Field type="checkbox" name="isServiceWorker" checked={values.isServiceWorker} />
           </label>
         </div>
         {/* disabled={isSubmitting}  ***Removed from submit button for testing***/}
@@ -46,12 +46,12 @@ function RegFrm({ values, errors, touched }) {
 }
 
 const RegistrationForm = withFormik({
-  mapPropsToValues({ email, password, cPassword, tos }) {
+  mapPropsToValues({ email, password, cPassword, isServiceWorker }) {
     return {
       email: email || "",
       password: password || "",
-      cPassword: cPassword || "",
-      tos: tos || false
+      cPassword: '' || "",
+      isServiceWorker: isServiceWorker || false
     };
   },
   validationSchema: Yup.object().shape({
@@ -60,7 +60,8 @@ const RegistrationForm = withFormik({
       .required("is required"),
     password: Yup.string()
       .min(8, "Password must be 8 characters or longer")
-      .required("is required"),
+      .required("is required")
+      ,
     cPassword: Yup.string().oneOf(
       [Yup.ref("password"), null],
       "Passwords must match!"
@@ -68,15 +69,12 @@ const RegistrationForm = withFormik({
   }),
 
   handleSubmit(values, formikBag) {
-    if (values.email === "alreadytaken@atb.dev") {
-      formikBag.setErrors({ email: "That email is already taken" });
-    } else if (values.tos === false) {
-      formikBag.setErrors({ tos: "Please Accept the Terms of Service" });
-    } else {
-      formikBag.props.doCreateAccount(values).then(() => {
-        return <Redirect to="/protected" />;
-      });
-    }
+   
+    formikBag.props.doCreateAccount(values)
+    .then(() => {formikBag.props.props.history.push("/login")});
+   console.log(values);
+
+ 
   }
 })(RegFrm);
 
