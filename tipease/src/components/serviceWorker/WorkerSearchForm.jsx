@@ -26,7 +26,7 @@ function SearchFrm(props) {
 
   return (
     <div className="form-card">
-      <h1>Search</h1>
+      <h1 className="worker-search">Search</h1>
       <form className="ui form" onSubmit={handleSubmit}>
         <div className="field">
           <select name="company" onChange={handleChange}>
@@ -48,7 +48,7 @@ function SearchFrm(props) {
         </div>
 
         <div className="field">
-          <input type="text" name="name" placeholder="Enter the workers name" value={values.name} onChange={handleChange} />
+          <input className="worker-search" type="text" name="name" placeholder="Enter the workers name" value={values.name} onChange={handleChange} />
         </div>
         <button className="ui button" type="submit">
           Search
