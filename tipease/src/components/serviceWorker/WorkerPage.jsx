@@ -7,7 +7,7 @@
 import React,{useEffect} from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import {getWorker} from '../../store/actions/workerActions'
-
+import '../../App.scss'
 const WorkerPage = (props) => {
   const worker = useSelector(state=>state.workerReducer.currentWorker);
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const WorkerPage = (props) => {
     <>
       <div className="worker-page">
         <h1>{`${worker.name.first} ${worker.name.last}'s Page`}</h1>
-        <div style={{ background: `url(${worker.thumbnail})` }} />
+        <img className='worker-thumbnail' alt='Worker Photo Here' src={worker.thumbnail} />
         <p>{worker.role}</p>
         <p>{worker.tagline}</p>
         <p>Employed for</p>

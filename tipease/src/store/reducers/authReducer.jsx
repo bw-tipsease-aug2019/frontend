@@ -3,6 +3,7 @@ import { types } from "../actions";
 
 const initialState = {
   token: "",
+  message:'',
   user: null,
   userProfile: null,
   isAuth: false,
@@ -57,14 +58,15 @@ export default (state = initialState, action) => {
         isLoading: false,
         isAuth: true,
         isSuccess: true,
-        user: payload.user,
+        message: payload.message,
         token: payload.token
       };
     case types.LOGIN_FAIL:
       return {
         ...state,
         errors: payload,
-        isLoading: false
+        isLoading: false,
+        token: ''
       };
     //CREATE PROFILE
     case types.CREATE_PROFILE_START:

@@ -18,7 +18,7 @@ export const testData = [
   {
     id:2,
     name: {first:'Jamie', last:'Evanston'},
-    thumbnail: '',
+    thumbnail: 'https://i.ibb.co/BV5Nv5F/joseph-chan-a1-MT14dl-ZYs-unsplash.jpg',
     company: 'Buffalo Wild Wings',
     role: 'Server',
     durationEmployed: {year:1,month:2},

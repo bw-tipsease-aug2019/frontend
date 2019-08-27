@@ -32,7 +32,7 @@ function TipFrm(props) {
         <button className="ui button" type="submit">
           Tip
         </button>
-        <div onClick={()=>{props.history.push('/')}}>Back</div>
+        <div className='ui button' onClick={()=>{props.history.push('/')}}>Back</div>
       </Form>
     </div>
   );
