@@ -46,7 +46,7 @@ const WorkerCard = props => {
         <div
           className="ui button"
           onClick={() => {
-            props.redirect(`/login`);
+            props.redirect(`/tip/${props.worker.id}`);
           }}
         >
           Tip
