@@ -42,7 +42,9 @@ const LoginForm = withFormik({
 
   handleSubmit(values, formikBag) {
     formikBag.props.doSignIn(values).then(() => {
-      formikBag.props.history.push("/");
+      formikBag.props.history.push("/")
+      window.location.reload()
+      ;
     });
   }
 })(LogFrm);
