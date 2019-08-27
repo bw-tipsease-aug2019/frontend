@@ -2,7 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
-import { doCreateAccount } from "../../store/actions/authActions";
+
+import { doCreateAccount } from '../../store/actions/authActions'
+import { Redirect } from "react-router-dom";
 
 function RegFrm({ values, errors, touched }) {
   return (
@@ -97,3 +99,4 @@ export default connect(
   null,
   { doCreateAccount }
 )(RegistrationForm);
+
