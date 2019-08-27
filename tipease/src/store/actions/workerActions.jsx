@@ -27,8 +27,9 @@ export const getWorkers = () => {
 }
 
 export const getWorker = (id) => {
+  let currWorkerTest = testData.filter(worker=>`${worker.id}`===id);
   return dispatch => {
-    dispatch({ type: types.WORKERS_START });
+   /* dispatch({ type: types.WORKERS_START });
     axiosWithAuth()
       .get(`url/${id}`)
       .then(res => {
@@ -37,7 +38,8 @@ export const getWorker = (id) => {
       })
       .catch(err => {
         dispatch({ type: types.WORKERS_FAIL, payload: err.response });
-      });
+      });*/
+      dispatch({ type: types.GET_WORKER_SUCCESS, payload: currWorkerTest });
   };
 }
 

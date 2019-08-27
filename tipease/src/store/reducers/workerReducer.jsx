@@ -43,7 +43,7 @@ export default (state = initialState, action) => {
     case types.GET_WORKER_SUCCESS:
       return ({
         ...state,
-        currentWorker: payload,
+        currentWorker: payload[0],
         isLoading: false,
         error: ''
       })

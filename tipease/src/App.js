@@ -9,6 +9,7 @@ import CreateAccountPage from "./components/CreateAccountPage";
 import TipperPage from "./components/Tipper/TipperPage";
 import WorkerPage from "./components/serviceWorker/WorkerPage";
 import WorkerList from "./components/serviceWorker/WorkerList";
+import TipForm from './components/serviceWorker/TipForm';
 // import Worker from "./components/serviceWorker/worker";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
       <Route path="/protected" component={Login} />
       <Route path="/tipper" component={TipperPage} />
       <Route path="/worker/:id" component={WorkerPage} />
+      <Route path="/tip/:id" component={TipForm} />
     </div>
   );
 }
