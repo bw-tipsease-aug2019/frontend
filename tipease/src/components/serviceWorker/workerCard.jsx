@@ -21,15 +21,15 @@ const WorkerCard = props => {
   const dispatch = useDispatch();
   return (
     <div>
-      <div onClick={/*dispatch(removeWorker())*/}>DELETE</div>
-      <h2>{props.worker.firstName} {props.worker.lastName}</h2>
-      <div style={{ background: url(props.worker.photo_url) }} />
+      <h2>{props.worker.name.first} {props.worker.name.last}</h2>
+      <div style={{ background: `url(${props.worker.thmubnail})` }} />
       <div>
         <p>{props.worker.role}</p>
         <p>{props.worker.tagline}</p>
-        <p>Employed for<br /><p>{props.worker.yearsWorked} years and {props.worker.monthsWorked} months.</p></p>
-        <div onClick={/* Add tipping finctionality, Route to tipping form /tip/${props.worker.id} */}>Tip</div>
-        <div onClick={/* Route to /worker/${props.worker.id} the worker page for this worker */}>More Info</div>
+        <p>Employed for<br /><p>{props.worker.durationEmployed.year} years and {props.worker.durationEmployed.month} months.</p></p>
+        <div onClick={()=>{/* Add tipping finctionality, Route to tipping form /tip/${props.worker.id} */}}>Tip</div>
+        <div onClick={()=>{/* Route to /worker/${props.worker.id} the worker page for this worker */}}>More Info</div>
+        <div onClick={()=>{/*dispatch(removeWorker())*/}}>DELETE</div>
       </div>
     </div>
   );

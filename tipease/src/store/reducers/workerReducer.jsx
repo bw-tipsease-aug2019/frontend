@@ -1,22 +1,21 @@
 import { types } from "../actions";
 
-import { types } from "../actions";
-
 const initialState = {
   workers: [],
   currentWorker: {
-    id:0,
-    name: {first:'', last:''},
+    id: 0,
+    name: { first: '', last: '' },
     thumbnail: '',
     company: '',
     role: '',
-    durationEmployed: {year:0,month:0},
-    tagline:'',
+    durationEmployed: { year: 0, month: 0 },
+    tagline: '',
     tips: [],
 
   },
   isLoading: false,
   error: '',
+  filter: {}
 };
 
 export default (state = initialState, action) => {
@@ -66,6 +65,13 @@ export default (state = initialState, action) => {
       return ({
         ...state,
         workers: payload,
+        isLoading: false,
+        error: ''
+      });
+    case types.SET_FILTER_SUCCESS:
+      return ({
+        ...state,
+        filter: payload,
         isLoading: false,
         error: ''
       });

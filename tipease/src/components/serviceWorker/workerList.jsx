@@ -8,34 +8,41 @@
 import React, {useEffect} from 'react';
 import SearchForm from './workerSearchForm';
 import { useDispatch, useSelector } from 'react-redux';
-//import {getWorkers} from '../actions/workerActions';
+import WorkerCard from './WorkerCard';
+import {getWorkers} from '../../store/actions/workerActions';
 
 const WorkerList = props => {
-  const workers = useSelector(state => state.workers);
-  const filter = useSelector(state => state.filter);
+  const workers = useSelector(state => state.workerReducer.workers);
+  const filter = useSelector(state => state.workerReducer.filter);
   const dispatch = useDispatch();
 
-  let filteredWorkers = workers ? [...workers] : [];
+  let filteredWorkers = [];
+  if(workers){
+    filteredWorkers = [...workers];
+  }
   if(filter){
-    if(filter.company){
+    if(filter.company && filter.company!=='select'){
       filteredWorkers = filteredWorkers.filter(worker=>worker.company===filter.company);
     }
 
-    if(filter.role){
+    if(filter.role && filter.role!=='select'){
       filteredWorkers = filteredWorkers.filter(worker=>worker.role===filter.role);
     }
 
     if(filter.name){
-      let regex = new RegExp(filter.name,'i');
-      filteredWorkers = filteredWorkers.filter(worker=>regex.test(worker.name));
+      filteredWorkers = filteredWorkers.filter(worker=>{
+        const fullName = `${worker.name.first} ${worker.name.last}`
+        return (fullName.search(new RegExp(filter.name, "i")) === 0);
+      });
     }
   }
 
   useEffect(()=>{
-    //dispatch(getWorkers());
+    dispatch(getWorkers());
   },[]);
 
   return (
+    <>
       <div className='searchParameters'>
         <SearchForm />
       </div>
@@ -49,6 +56,7 @@ const WorkerList = props => {
           );
         })}
       </div>
+    </>
   );
 }
 
