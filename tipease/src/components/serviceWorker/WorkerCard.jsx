@@ -30,7 +30,6 @@ const WorkerCard = props => {
         <p>{props.worker.durationEmployed.year} years and {props.worker.durationEmployed.month} months.</p>
         <div onClick={()=>{props.redirect(`/tip/${props.worker.id}`)}}>Tip</div>
         <div onClick={()=>{props.redirect(`/worker/${props.worker.id}`)}}>More Info</div>
-        <div onClick={()=>{/*dispatch(removeWorker())*/}}>DELETE</div>
       </div>
     </div>
   );
