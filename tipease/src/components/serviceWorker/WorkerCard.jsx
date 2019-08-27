@@ -46,7 +46,7 @@ const WorkerCard = props => {
               props.redirect(`/login`);
             }}
           >
-            Login To Tip
+            Login
           </div>
         ) : (
           <div
