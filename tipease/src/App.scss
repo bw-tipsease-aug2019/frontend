@@ -47,10 +47,23 @@ $light-blue: #d8e7ff;
   }
 }
 
-// .worker-card {
-//   border: 1px solid black;
-//   width: 45%;
-//   margin: 1rem auto;
-//   border-radius: 1%;
-//   padding: 1rem;
-// }
+.worker-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 500px;
+
+  .worker-info {
+    flex: 1 0 auto;
+  }
+
+  .worker-card-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .ui.button {
+      width: 50%;
+    }
+  }
+}
