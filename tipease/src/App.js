@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-
+import PrivateRoute from './utils/PrivateRoute'
 import './App.css';
 
 import Login from "./components/forms/Login";
@@ -14,9 +14,9 @@ function App() {
     <div className="App">
       
       <h1>Hello Tipease</h1>
-      <Route exact path="/" component={CreateAccountPage}/>
-      <Route path="/protected/" component={Login} />
-      <Route path="/tipper" component={TipperPage}/>
+      <Route exact path="/createaccount" component={CreateAccountPage} login={Login}/>
+      <Route path="/login/" component={Login} />
+      <PrivateRoute path="/tipper" component={TipperPage}/>
       
     </div>
   );
