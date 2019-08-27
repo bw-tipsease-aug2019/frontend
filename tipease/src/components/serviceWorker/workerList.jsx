@@ -6,10 +6,11 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 import React, {useEffect} from 'react';
-import SearchForm from './workerSearchForm';
+import SearchForm from './WorkerSearchForm';
 import { useDispatch, useSelector } from 'react-redux';
 import WorkerCard from './WorkerCard';
 import {getWorkers} from '../../store/actions/workerActions';
+
 
 const WorkerList = props => {
   const workers = useSelector(state => state.workerReducer.workers);

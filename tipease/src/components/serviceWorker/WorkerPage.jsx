@@ -10,6 +10,7 @@ import TipList from "./TipList";
 
 export default function WorkerPage() {
   return (
+    
     <>
       <nav>
         <Link to="/worker/tips">Tips</Link>
