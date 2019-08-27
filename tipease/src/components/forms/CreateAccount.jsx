@@ -10,15 +10,15 @@ function RegFrm({ values, errors, touched }) {
       <h1>Create an Account</h1>
       <Form className="ui form">
         <div className="field">
-            {touched.email && errors.email && <p>{errors.email}</p>}
+            {touched.email && errors.email && <p className="error">{errors.email}</p>}
             <Field type="email" name="email" placeholder="Email" />
         </div>
         <div className="field">
-            {touched.password && errors.password && <p>{errors.password}</p>}
+            {touched.password && errors.password && <p className="error">{errors.password}</p>}
             <Field type="password" name="password" placeholder="Password" />
         </div>
         <div className="field">
-            {touched.cPassword && errors.cPassword && <p>{errors.cPassword}</p>}
+            {touched.cPassword && errors.cPassword && <p className="error">{errors.cPassword}</p>}
             <Field
               type="password"
               name="cPassword"
@@ -28,7 +28,7 @@ function RegFrm({ values, errors, touched }) {
         <div className="field">
           <label htmlFor="isServiceWorker">
             Check if you are a service worker
-            {touched.isServiceWorker && errors.isServiceWorker && <p>{errors.isServiceWorker}</p>}
+            {touched.isServiceWorker && errors.isServiceWorker && <p className="error">{errors.isServiceWorker}</p>}
             <Field type="checkbox" name="isServiceWorker" checked={values.isServiceWorker} />
           </label>
         </div>
@@ -55,11 +55,11 @@ const RegistrationForm = withFormik({
   },
   validationSchema: Yup.object().shape({
     email: Yup.string()
-      .email("is not valid")
-      .required("is required"),
+      .email("email is not valid")
+      .required("email is required"),
     password: Yup.string()
       .min(8, "Password must be 8 characters or longer")
-      .required("is required")
+      .required("password is required")
       ,
     cPassword: Yup.string().oneOf(
       [Yup.ref("password"), null],
