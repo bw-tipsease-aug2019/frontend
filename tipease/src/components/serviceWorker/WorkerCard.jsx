@@ -24,6 +24,7 @@ const WorkerCard = props => {
       <h2>{props.worker.name.first} {props.worker.name.last}</h2>
       <img className='worker-thumbnail' alt='Worker Photo Here' src={props.worker.thumbnail} />
       <div>
+        <h3>{props.worker.company}</h3>
         <p>{props.worker.role}</p>
         <p>{props.worker.tagline}</p>
         <p>Employed for</p>
