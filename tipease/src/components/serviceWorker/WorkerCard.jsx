@@ -21,43 +21,37 @@ const WorkerCard = props => {
   const dispatch = useDispatch();
   return (
     <div className="worker-card">
-      <h2>
-        {props.worker.name.first} {props.worker.name.last}
-      </h2>
-      <img
-        className="worker-thumbnail"
-        alt="Worker Photo Here"
-        src={props.worker.thumbnail}
-      />
-      <div>
-        <h3>{props.worker.company}</h3>
-        <p>{props.worker.role}</p>
-        <p>{props.worker.tagline}</p>
-        <p>Employed for</p>
-        <p>
-          {props.worker.durationEmployed.year} years and{" "}
-          {props.worker.durationEmployed.month} months.
-        </p>
+      <div className="worker-info">
+        <h2>
+          {props.worker.name.first} {props.worker.name.last}
+        </h2>
+        <img
+          className="worker-thumbnail"
+          alt="Worker Photo Here"
+          src={props.worker.thumbnail}
+        />
+        <div>
+          <h3>{props.worker.company}</h3>
+          <p>{props.worker.role}</p>
+          <p>{props.worker.tagline}</p>
+          <p>Employed for</p>
+          <p>
+            {props.worker.durationEmployed.year} years and{" "}
+            {props.worker.durationEmployed.month} months.
+          </p>
+        </div>
+      </div>
 
-        {!localStorage.getItem("token") ? (
-          <div
-            className="ui button"
-            onClick={() => {
-              props.redirect(`/login`);
-            }}
-          >
-            Login To Tip
-          </div>
-        ) : (
-          <div
-            className="ui button"
-            onClick={() => {
-              props.redirect(`/tip/${props.worker.id}`);
-            }}
-          >
-            Tip
-          </div>
-        )}
+      <div className="worker-card-buttons">
+        <div
+          className="ui button"
+          onClick={() => {
+            props.redirect(`/login`);
+          }}
+        >
+          Tip
+        </div>
+
         <div
           className="ui button"
           onClick={() => {
@@ -67,6 +61,30 @@ const WorkerCard = props => {
           More Info
         </div>
       </div>
+
+      {/* {!localStorage.getItem("token") ? (
+        
+      ) : (
+        <div className="worker-card-buttons">
+          <div
+            className="ui button"
+            onClick={() => {
+              props.redirect(`/tip/${props.worker.id}`);
+            }}
+          >
+            Tip
+          </div>
+
+          <div
+            className="ui button"
+            onClick={() => {
+              props.redirect(`/worker/${props.worker.id}`);
+            }}
+          >
+            More Info
+          </div>
+        </div>
+      )} */}
     </div>
   );
 };
