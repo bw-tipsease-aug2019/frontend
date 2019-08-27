@@ -29,7 +29,7 @@ export const doSignIn = credentials => dispatch => {
             res =>{
                 console.log(res)
                 //set token 
-                localStorage.setItem('token', (res.data))
+                localStorage.setItem('token', (res.data.token))
                 dispatch ({ type: types.LOGIN_SUCCESS, payload: res.data})
             }
         )

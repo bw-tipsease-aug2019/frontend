@@ -1,7 +1,9 @@
-import React from "react";
-import { Route } from "react-router-dom";
 
-import "./App.scss";
+import React from 'react';
+import { Route } from 'react-router-dom';
+import PrivateRoute from './utils/PrivateRoute'
+import './App.scss';
+
 
 import Login from "./components/forms/Login";
 import NavBar from "./components/navigation/NavBar";
@@ -19,8 +21,8 @@ function App() {
       <h1>Hello Tipease</h1>
       <Route exact path="/" component={WorkerList} />
       <Route path="/register" component={CreateAccountPage} />
-      <Route path="/protected" component={Login} />
-      <Route path="/tipper" component={TipperPage} />
+      <Route path="/login" component={Login} />
+      <PrivateRoute path="/tipper" component={TipperPage} />
       <Route path="/worker/:id" component={WorkerPage} />
       <Route path="/tip/:id" component={TipForm} />
     </div>
