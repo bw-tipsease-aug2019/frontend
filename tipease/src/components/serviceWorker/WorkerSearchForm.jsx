@@ -1,58 +1,60 @@
-import React from "react";
-import { withFormik, Form, Field } from "formik";
+import React, { useState } from "react";
 
 import { useDispatch } from 'react-redux';
-import {setFilter} from '../actions/workerActions'; 
+import { setFilter } from '../../store/actions/workerActions';
 
-const dispatch = useDispatch();
 
-function SearchFrm({ errors, touched }) {
+function SearchFrm(props) {
+  const dispatch = useDispatch();
+  const [values, setValues] = useState({
+    company: '',
+    role: '',
+    name: ''
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(setFilter(values));
+  }
+
+  const handleChange = e => {
+    setValues({
+      ...values,
+      [e.target.name]: e.target.value
+    })
+  }
+
   return (
     <div className="form-card">
       <h1>Search</h1>
-      <Form className="ui form">
+      <form className="ui form" onSubmit={handleSubmit}>
         <div className="field">
-          {touched.company && errors.company && <p>{errors.company}</p>}
-          <Field type="select" name="company">
-            <option value="select" selected>Select A Company...</option>
-            {/* Map through a list of all the companies and display them as options */}
-          </Field>
+          <select name="company" onChange={handleChange}>
+            <option value="select" defaultValue>Select A Company...</option>
+            {props.companyNames.map((name,i)=>{
+              return (
+                <option key={i} value={`${name}`}>{`${name}`}</option>
+              );
+            })}
+          </select>
         </div>
         <div className="field">
-          {touched.role && errors.role && <p>{errors.role}</p>}
-          <Field type="select" name="role">
-            <option value="select" selected>Select A Role...</option>
-            <option value="server">Server</option>
-            <option value="bellhop">Bellhop</option>
-            <option value="valet">Valet</option>
-          </Field>
+          <select name="role" onChange={handleChange}>
+            <option value="select" defaultValue>Select A Role...</option>
+            <option value="Server">Server</option>
+            <option value="Bellhop">Bellhop</option>
+            <option value="Valet">Valet</option>
+          </select>
         </div>
 
         <div className="field">
-          {touched.name && errors.name && <p>{errors.name}</p>}
-          <Field type="text" name="name" placeholder="Enter the workers name" />
+          <input type="text" name="name" placeholder="Enter the workers name" value={values.name} onChange={handleChange} />
         </div>
-        <button className="ui button" type="submit" onClick={() => {}}>
+        <button className="ui button" type="submit">
           Search
         </button>
-      </Form>
+      </form>
     </div>
   );
 }
-
-const SearchForm = withFormik({
-  mapPropsToValues({ company, role, name }) {
-    return {
-      company: company || '',
-      role: role || '',
-      name: name || ''
-    };
-  },
-
-  handleSubmit(values, formikBag) {
-    //dispatch(setFilter(values));
-    formikBag.resetForm();
-  }
-})(SearchFrm);
-
-export default SearchForm;
+export default SearchFrm;
