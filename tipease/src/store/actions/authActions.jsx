@@ -36,6 +36,7 @@ export const doSignIn = credentials => dispatch => {
         .catch(
             err => {
                 console.log(err.response)
+                localStorage.removeItem('token')
                 dispatch({ type: types.LOGIN_FAIL, payload: err.response})
             }
         )
@@ -121,6 +122,7 @@ export const doSignIn = credentials => dispatch => {
   };
   export const doSignOut = () => dispatch =>{
     dispatch({ type: types.LOGOUT_START});
+    localStorage.removeItem('token')
   };
 
   export const doWelcomeBack = token => {
