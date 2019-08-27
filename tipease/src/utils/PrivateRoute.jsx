@@ -8,7 +8,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={props => {
-        if (localStorage.getItem('serviceWorker') === true) {
+        if (localStorage.getItem('serviceWorker') === 'true') {
           return <Component {...props} />;
         }
         return <Redirect to="/" />;
