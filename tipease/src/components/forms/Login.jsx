@@ -3,8 +3,11 @@ import { connect } from "react-redux";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { doSignIn } from "../../store/actions/authActions";
+import { Redirect } from "react-router-dom";
+
 
 function LogFrm({ errors, touched }) {
+  const token = localStorage.getItem("token");
   return (
     <div className="form-card">
       <h1>Login</h1>
@@ -13,6 +16,7 @@ function LogFrm({ errors, touched }) {
           {touched.email && errors.email && <p>{errors.email}</p>}
           <Field type="text" name="email" placeholder="Email" />
         </div>
+
         <div className="field">
           {touched.password && errors.password && <p>{errors.password}</p>}
           <Field type="password" name="password" placeholder="Password" />
@@ -34,18 +38,23 @@ const LoginForm = withFormik({
   },
 
   validationSchema: Yup.object().shape({
-    email: Yup.string()
-      .required("is required")
-      .email("Email is not Valid"),
+    email: Yup.string().required("is required"),
+    // .email("Email is not Valid")
     password: Yup.string().required("is required")
   }),
 
   handleSubmit(values, formikBag) {
     formikBag.props.doSignIn(values).then(() => {
-      formikBag.props.history.push("/tipper");
+      // resetForm();
+      return <Redirect to="/" />;
     });
   }
 })(LogFrm);
+
+// const mapPropsToState= (state) => ({
+//   ...state,
+//   user: state.authReducer.user
+// })
 
 export default connect(
   null,
