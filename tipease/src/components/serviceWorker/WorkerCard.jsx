@@ -20,16 +20,16 @@ import { useDispatch } from 'react-redux';
 const WorkerCard = props => {
   const dispatch = useDispatch();
   return (
-    <div>
+    <div className='worker-card'>
       <h2>{props.worker.name.first} {props.worker.name.last}</h2>
-      <div style={{ background: `url(${props.worker.thumbnail})` }} />
+      <img className='worker-thumbnail' alt='Worker Photo Here' src={props.worker.thumbnail} />
       <div>
         <p>{props.worker.role}</p>
         <p>{props.worker.tagline}</p>
         <p>Employed for</p>
         <p>{props.worker.durationEmployed.year} years and {props.worker.durationEmployed.month} months.</p>
-        <div onClick={()=>{props.redirect(`/tip/${props.worker.id}`)}}>Tip</div>
-        <div onClick={()=>{props.redirect(`/worker/${props.worker.id}`)}}>More Info</div>
+        <div className='ui button' onClick={()=>{props.redirect(`/tip/${props.worker.id}`)}}>Tip</div>
+        <div className='ui button' onClick={()=>{props.redirect(`/worker/${props.worker.id}`)}}>More Info</div>
       </div>
     </div>
   );

@@ -12,8 +12,7 @@ const TipperPage = () => {
     <>
       <div>
         <h1>Tipper Page</h1>
-
-        <form>
+        <form className='ui form'>
           <input
             type="text"
             placeholder="Enter Worker's Name"

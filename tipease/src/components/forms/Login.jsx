@@ -42,6 +42,7 @@ const LoginForm = withFormik({
 
   handleSubmit(values, formikBag) {
     formikBag.props.doSignIn(values).then(() => {
+      console.log(values)
       formikBag.props.history.push("/tipper");
     });
   }
