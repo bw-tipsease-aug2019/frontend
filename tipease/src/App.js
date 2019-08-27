@@ -11,7 +11,7 @@ import CreateAccountPage from "./components/CreateAccountPage";
 import TipperPage from "./components/Tipper/TipperPage";
 import WorkerPage from "./components/serviceWorker/WorkerPage";
 import WorkerList from "./components/serviceWorker/WorkerList";
-import TipForm from './components/serviceWorker/TipForm';
+import TipForm from './components/serviceWorker/tipForm';
 // import Worker from "./components/serviceWorker/worker";
 
 function App() {
