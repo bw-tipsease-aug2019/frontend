@@ -23,6 +23,7 @@ $light-blue: #d8e7ff;
   background-repeat: no-repeat;
   background-size: cover;
   font-family: 'fugaz one', sans-serif;
+  height: 100%;
 
   h1 {
     color: #fff;
@@ -64,6 +65,10 @@ $light-blue: #d8e7ff;
 
     select {
       border: 2px solid $green !important;
+    }
+
+    .error {
+      color: $dark-pink;
     }
 
     .worker-search {
@@ -134,10 +139,18 @@ $light-blue: #d8e7ff;
   }
 }
 
+.worker-page > * {
+  color: white;
+}
+
 .ui.button {
   background: $green !important;
 
   &:hover {
     background: $dark-green !important;
   }
+}
+
+.ui.form .field>label {
+  color: white !important;
 }
