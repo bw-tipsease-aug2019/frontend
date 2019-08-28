@@ -37,7 +37,8 @@ $light-blue: #d8e7ff;
   height: 50px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 0 1.25rem;
   
   a {
     font-size: 2rem;
@@ -47,8 +48,28 @@ $light-blue: #d8e7ff;
     &:hover {
       color: $dark-pink;
     }
+
+    &.active {
+      color: $dark-pink;
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    justify-content: flex-end;
+    flex-basis: 80%;
+
+    a {
+      margin-right: 1rem;
+      font-size: 1.5rem;
+
+        &:last-of-type{
+        margin-right: 0;
+      }
+    }
   }
 }
+
 
 .form-card {
   margin: 2rem 0;
