@@ -79,7 +79,7 @@ const RegistrationForm = withFormik({
   handleSubmit(values, formikBag) {
    
     formikBag.props.doCreateAccount(values)
-    .then(() => {formikBag.props.props.history.push("/login")});
+    .then(() => {formikBag.props.history.push("/login")});
    console.log(values);
 
  
