@@ -35,18 +35,26 @@ $light-blue: #d8e7ff;
   width: 100%;
   background: $light-green;
   height: 50px;
-  display: flex;
   align-items: center;
-  justify-content: center;
   
-  a {
+  .nav-link {
     font-size: 2rem;
     color: $dark-green;
     text-decoration: none;
+    margin-right: 2rem;
 
     &:hover {
       color: $dark-pink;
     }
+  }
+  .float-right{
+    float: right;
+    margin-top: 1rem;
+  }
+  .float-left{
+    float: left;
+    margin-top: 1rem;
+    margin-left: 1rem;
   }
 }
 
