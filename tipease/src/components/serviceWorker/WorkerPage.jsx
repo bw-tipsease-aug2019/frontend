@@ -19,7 +19,7 @@ const WorkerPage = props => {
   return (
     <>
       <div className="worker-page">
-        <h1>{`${worker.name.first} ${worker.name.last}'s Page`}</h1>
+        <h1>{`${worker.name.first} ${worker.name.last}`}</h1>
         <img
           className="worker-thumbnail"
           alt="Worker Photo Here"

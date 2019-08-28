@@ -16,7 +16,6 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <h1 className="app-title">Hello Tipease</h1>
       <Route exact path="/" component={WorkerList} />
       <Route path="/register" component={CreateAccountPage} />
       <Route path="/login" component={Login} />

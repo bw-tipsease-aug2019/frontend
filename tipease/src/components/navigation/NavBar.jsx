@@ -19,7 +19,6 @@ export default function NavBar() {
         <Link to="/">Tipper</Link>
         <Link to="/workers/tips">Worker</Link>
         {!localStorage.getItem('token') ? (<><Link to='/login'>Login</Link> <Link to='/register'>Create Account</Link></>): (<Link to='/logout'>Logout</Link>)}
-
       </nav>
     </div>
   );

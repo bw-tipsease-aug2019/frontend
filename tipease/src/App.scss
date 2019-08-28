@@ -23,6 +23,7 @@ $light-blue: #d8e7ff;
   background-repeat: no-repeat;
   background-size: cover;
   font-family: 'fugaz one', sans-serif;
+  height: 100%;
 
   h1 {
     color: #fff;
@@ -30,13 +31,27 @@ $light-blue: #d8e7ff;
   }
 }
 
-nav > a {
-  color: white;
-  text-decoration: underline;
+.nav-bar {
+  width: 100%;
+  background: $light-green;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  a {
+    font-size: 2rem;
+    color: $dark-green;
+    text-decoration: none;
 
-  &:hover { 
-    color: $dark-green
+    &:hover {
+      color: $dark-pink;
+    }
   }
+}
+
+.form-card {
+  margin: 2rem 0;
 }
 
 .form {
@@ -50,6 +65,10 @@ nav > a {
 
     select {
       border: 2px solid $green !important;
+    }
+
+    .error {
+      color: $dark-pink;
     }
 
     .worker-search {
@@ -120,10 +139,18 @@ nav > a {
   }
 }
 
+.worker-page > * {
+  color: white;
+}
+
 .ui.button {
   background: $green !important;
 
   &:hover {
     background: $dark-green !important;
   }
+}
+
+.ui.form .field>label {
+  color: white !important;
 }
