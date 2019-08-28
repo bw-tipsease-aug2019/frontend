@@ -1,13 +1,21 @@
 import React from "react";
 
-export default function TipCard({ tips }) {
+export default function TipCard({ tip, name }) {
+  // TODO: replace defaults with data from the server
+  name = name ||  {first: "Jerry", last: "Coldwell"}
+  tip = tip || {
+    amount: 25,
+    comment: 'Really great server.'
+  }
+
   return (
     <div className="tip-card">
-      <div className="tip-card-title">
-        <p>Tipper Name</p>
-      </div>
       <div className="tip-card-amount">
-        <p>$5</p>
+        <p>{`$${tip.amount}`}</p>
+      </div>
+
+      <div className="tip-card-title">
+        <p>{`${name.first} ${name.last}`}</p>
       </div>
     </div>
   );

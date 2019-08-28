@@ -1,5 +1,5 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Fugaz+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Fugaz+One|Roboto&display=swap');
 
 // Variables
 $dark-purple: #8e40ce;
@@ -16,24 +16,82 @@ $dark-blue: #4286f4;
 $light-blue: #d8e7ff;
 
 .App {
+  background: $light-pink;
   text-align: center;
   width: 100%;
   margin: 0 auto;
-  background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url("https://images.unsplash.com/photo-1521017432531-fbd92d768814?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
-  background-repeat: no-repeat;
-  background-size: cover;
   font-family: 'fugaz one', sans-serif;
   height: 100%;
 
   h1 {
-    color: #fff;
-    text-shadow: 2px 0px 4px $green;
+	color: #fff;
+	text-shadow: 2px 0px 4px $green;
+  }
+}
+
+.coffee-shop-bg {
+  background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url("https://images.unsplash.com/photo-1521017432531-fbd92d768814?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 2rem 0;
+}
+
+.nav-bar {
+  width: 100%;
+  background: $light-green;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.25rem;
+  
+  a {
+    font-size: 2rem;
+    color: $dark-green;
+    text-decoration: none;
+
+    &:hover {
+      color: $dark-pink;
+    }
+
+    &.active {
+      color: $dark-pink;
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    justify-content: flex-end;
+    flex-basis: 80%;
+
+    a {
+      margin-right: 1rem;
+      font-size: 1.5rem;
+
+      &:last-of-type{
+        margin-right: 0;
+      }
+    }
   }
 }
 
 
 .form-card {
-  margin: 2rem 0;
+  margin: 0;
+
+  a {
+    color: $light-pink;
+
+    &:hover {
+      color: $dark-pink;
+    }
+  }
+  
+  p {
+    color: white;
+    margin: 1.5rem 0;
+  }
 }
 
 .form {
@@ -56,7 +114,28 @@ $light-blue: #d8e7ff;
     .worker-search {
       border: 2px solid $green !important;
     }
+
+    .is-service-worker {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      p {
+        margin: 0 .75rem 0 0;
+      }
+      
+    }
   }
+  
+  .form-buttons {
+    button {
+      margin-right: 1rem;
+
+      &:last-of-type {
+        margin: 0;
+      }
+    }
+	}
 }
 
 .tip-card-wrapper {
@@ -66,11 +145,18 @@ $light-blue: #d8e7ff;
   margin: 0 auto;
 
   .tip-card {
-    border: 1px solid #000;
-    border-radius: 2px;
+    width: 100%;
+    background: white;
+    box-shadow: 0px 0px 3px 2px rgb(133,187,101);
+    border-radius: 10px;
     max-width: 250px;
-    margin: 1rem;
+    margin: 1rem auto;
     padding: 1rem;
+
+    .tip-card-amount {
+      font-size: 2.5rem;
+      color: $dark-green;
+    }
   }
 }
 
@@ -82,7 +168,7 @@ $light-blue: #d8e7ff;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   width: 90%;
-  margin: 0 auto;
+  margin: 2rem auto;
 
   .workers-grid-item {
     border-radius: 5px;
@@ -100,14 +186,18 @@ $light-blue: #d8e7ff;
   justify-content: space-between;
   height: 500px;
   
+  p {
+    font-family: 'Roboto', sans-serif;
+  }
 
   .worker-info {
     flex: 1 0 auto;
+    padding: 1rem;
 
-      .worker-thumbnail {
-        border-radius: 5px;
-        width: 100%;
-      }
+    .worker-thumbnail {
+      border-radius: 5px;
+      width: 100%;
+    }
   }
 
   .worker-card-buttons {
@@ -117,6 +207,14 @@ $light-blue: #d8e7ff;
 
     .ui.button {
       width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    p {
+      font-family: Lato;
+      font-weight: 700;
     }
   }
 }

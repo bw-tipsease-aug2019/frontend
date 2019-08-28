@@ -9,7 +9,7 @@
 /             * Log out button
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 export default function NavBar() {
   function logout() {
@@ -19,32 +19,25 @@ export default function NavBar() {
   return (
     <div>
       <nav className="nav-bar">
-        <div className="float-left">
-          <Link to="/" className="title nav-link">
-            Tipease
-          </Link>
-          <Link className="nav-link" to="/">
-            Tipper
-          </Link>
-          <Link className="nav-link" to="/workers/tips">
-            Worker
-          </Link>
+        <div className="nav-logo">
+          <NavLink to="/">tipsease</NavLink>
         </div>
-        <div className="float-right">
+        <div className="nav-links">
+
+          {localStorage.getItem('serviceWorker') === 'true' && (
+            <NavLink to="/workers/tips">view tips</NavLink>
+          )}
+
           {!localStorage.getItem("token") ? (
             <>
-              <Link className="nav-link" to="/login">
-                Login
-              </Link>
-              <Link className="nav-link" to="/register">
-                Create Account
-              </Link>
+              <NavLink to="/login">login</NavLink>{" "}
+              <NavLink to="/register">register</NavLink>
             </>
           ) : (
-            <Link className="nav-link" to="/" onClick={() => logout()}>
-              Logout
-            </Link>
-          )}
+              <Link to="/" onClick={() => logout()}>
+                logout
+              </Link>
+            )}
         </div>
       </nav>
     </div>

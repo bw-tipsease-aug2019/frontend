@@ -125,21 +125,21 @@ export default (state = initialState, action) => {
         errors: payload
       };
     // EDIT PROFILE
-    case types.EDIT_USER_START:
+    case types.UPDATE_USER_START:
       return {
         ...state,
         isLoading: true,
         isAuth: true,
         isSuccess: false
       };
-    case types.EDIT_USER_SUCCESS:
+    case types.UPDATE_USER_SUCCESS:
       return {
         ...state,
         isLoading: false,
         isSuccess: true,
         user: payload
       };
-    case types.EDIT_USER_FAIL:
+    case types.UPDATE_USER_FAIL:
       return {
         ...state,
         isLoading: false,

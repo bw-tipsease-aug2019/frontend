@@ -45,34 +45,35 @@ export const doSignIn = credentials => dispatch => {
 }
 
   
-  export const doCreateProfile = newProfileDetails => dispatch =>{
-    dispatch({ type: types.CREATE_PROFILE_START});
-    return axiosWithAuth()
-    .post('needsEndpoint', newProfileDetails)
-    .then(
-      res => {
-        dispatch({ type: types.CREATE_PROFILE_SUCCESS, payload: {message: 'Profile was created successfully!'}});
-        console.log(res)
-      }
-    )
-    .catch(
-      err => {
-        dispatch({type: types.CREATE_PROFILE_FAIL, payload: err})
-         console.log(err.response)
-      } 
-    )
+  // export const doCreateProfile = newProfileDetails => dispatch =>{
+  //   dispatch({ type: types.CREATE_PROFILE_START});
+  //   return axiosWithAuth()
+  //   .post('needsEndpoint', newProfileDetails)
+  //   .then(
+  //     res => {
+  //       dispatch({ type: types.CREATE_PROFILE_SUCCESS, payload: {message: 'Profile was created successfully!'}});
+  //       console.log(res)
+  //     }
+  //   )
+  //   .catch(
+  //     err => {
+  //       dispatch({type: types.CREATE_PROFILE_FAIL, payload: err})
+  //        console.log(err.response)
+  //     } 
+  //   )
   
-  };
+  // };
 
-  export const getUserProfile = () => dispatch => {
+  export const getUsers = data => dispatch => {
 
     dispatch({ type: types.GET_USER_START});
     return axiosWithAuth()
-      .get('needsEndpoint')
-      .then(
-        res => {
-          // console.log(res)
-          dispatch({type: types.GET_USER_SUCCESS, payload: res.data.user});
+    .get(`/users/`, data)
+    .then(
+      res => {
+        console.log(data)
+          console.log('auth action get user', res)
+          dispatch({type: types.GET_USER_SUCCESS, payload: res.data.users});
         }
       )
       .catch(
@@ -84,20 +85,20 @@ export const doSignIn = credentials => dispatch => {
   
   };
 
-  export const editUser = user => dispatch => {
+  export const doEditProfile = user => dispatch => {
 
-    dispatch({ type: types.GET_USER_START});
+    dispatch({ type: types.UPDATE_USER_START});
     return axiosWithAuth()
-      .put('needsEndpoint', user)
+      .put('/users/:id', user)
       .then(
         res => {
           console.log(res)
-          dispatch({type: types.GET_USER_SUCCESS, payload: res.data.user});
+          dispatch({type: types.UPDATE_USER_SUCCESS, payload: res.data.user});
         }
       )
       .catch(
         err => {
-          dispatch({type: types.GET_USER_FAIL, payload: err})
+          dispatch({type: types.UPDATE_USER_FAIL, payload: err})
           console.log(err)
         }
       )
