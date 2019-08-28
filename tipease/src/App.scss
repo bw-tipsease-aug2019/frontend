@@ -26,8 +26,8 @@ $light-blue: #d8e7ff;
   height: 100%;
 
   h1 {
-    color: #fff;
-    text-shadow: 2px 0px 4px $green;
+	color: #fff;
+	text-shadow: 2px 0px 4px $green;
   }
 }
 
@@ -63,7 +63,7 @@ $light-blue: #d8e7ff;
       margin-right: 1rem;
       font-size: 1.5rem;
 
-        &:last-of-type{
+      &:last-of-type{
         margin-right: 0;
       }
     }
@@ -96,6 +96,16 @@ $light-blue: #d8e7ff;
       border: 2px solid $green !important;
     }
   }
+  
+  .form-buttons {
+    button {
+      margin-right: 1rem;
+
+      &:last-of-type {
+        margin: 0;
+      }
+    }
+	}
 }
 
 .tip-card-wrapper {
@@ -143,10 +153,10 @@ $light-blue: #d8e7ff;
   .worker-info {
     flex: 1 0 auto;
 
-      .worker-thumbnail {
-        border-radius: 5px;
-        width: 100%;
-      }
+    .worker-thumbnail {
+      border-radius: 5px;
+      width: 100%;
+    }
   }
 
   .worker-card-buttons {

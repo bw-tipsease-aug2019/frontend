@@ -29,10 +29,13 @@ function TipFrm(props) {
         <label htmlFor='comment'>Leave a comment: </label>
           <Field type="text" name="comment" id="comment" placeholder="Add a comment" />
         </div>
-        <button className="ui button" type="submit">
-          Tip
-        </button>
-        <div className='ui button' onClick={()=>{props.history.push('/')}}>Back</div>
+
+        <div className="form-buttons">
+          <button className="ui button" type="submit">
+            Tip
+          </button>
+          <button className='ui button' onClick={()=>{props.history.push('/')}}>Back</button>
+        </div>
       </Form>
     </div>
   );
