@@ -18,20 +18,34 @@ export default function NavBar() {
   }
   return (
     <div>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/">Tipper</Link>
-        <Link to="/workers/tips">Worker</Link>
-        {!localStorage.getItem("token") ? (
-          <>
-            <Link to="/login">Login</Link>{" "}
-            <Link to="/register">Create Account</Link>
-          </>
-        ) : (
-          <Link to="/" onClick={() => logout()}>
-            Logout
+      <nav className="nav-bar">
+        <div className="float-left">
+          <Link to="/" className="title nav-link">
+            Tipease
           </Link>
-        )}
+          <Link className="nav-link" to="/">
+            Tipper
+          </Link>
+          <Link className="nav-link" to="/workers/tips">
+            Worker
+          </Link>
+        </div>
+        <div className="float-right">
+          {!localStorage.getItem("token") ? (
+            <>
+              <Link className="nav-link" to="/login">
+                Login
+              </Link>
+              <Link className="nav-link" to="/register">
+                Create Account
+              </Link>
+            </>
+          ) : (
+            <Link className="nav-link" to="/" onClick={() => logout()}>
+              Logout
+            </Link>
+          )}
+        </div>
       </nav>
     </div>
   );

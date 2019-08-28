@@ -31,24 +31,6 @@ $light-blue: #d8e7ff;
   }
 }
 
-.nav-bar {
-  width: 100%;
-  background: $light-green;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  a {
-    font-size: 2rem;
-    color: $dark-green;
-    text-decoration: none;
-
-    &:hover {
-      color: $dark-pink;
-    }
-  }
-}
 
 .form-card {
   margin: 2rem 0;

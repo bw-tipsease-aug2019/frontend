@@ -2,21 +2,13 @@ import React from "react";
 import { connect } from "react-redux";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
-import { doCreateProfile } from "../../store/actions/authActions";
+import { doEditProfile } from "../../store/actions/authActions";
 
-function ProfileForm({ values, errors, touched }) {
+function EditProfileForm({ values, errors, touched }) {
     return (
     <div className="form-card">
-      <h1>Create Your Service Worker Profile</h1>
+      <h1>Edit Your Service Worker Profile</h1>
       <Form className="ui form">
-        <div className="field">
-            {touched.first && errors.first && <p>{errors.first}</p>}
-            <Field type="text" name="first" placeholder="First Name" />
-        </div>
-        <div className="field">
-            {touched.last && errors.last && <p>{errors.last}</p>}
-            <Field type="text" name="last" placeholder="Last Name" />
-        </div>
         <div className="field">
             {touched.thumbnail && errors.thumbnail && <p>{errors.thumbnail}</p>}
             <Field type="text" name="thumbnail" placeholder="Thumbnail URL" />
@@ -45,11 +37,9 @@ function ProfileForm({ values, errors, touched }) {
   );
 }
 
-const CreateProfile = withFormik({
-  mapPropsToValues({ first, last, thumbnail, year, month, tagline }) {
+const EditProfile = withFormik({
+  mapPropsToValues({ thumbnail, year, month, tagline }) {
     return {
-      first: first || "",
-      last: last || "",
       thumbnail: thumbnail || "",
       year: year || "",
       month: month || "",
@@ -57,10 +47,6 @@ const CreateProfile = withFormik({
       };
   },
   validationSchema: Yup.object().shape({
-    first: Yup.string()
-      .required("First Name is required"),
-    last: Yup.string()
-      .required("Last Name is required"),
     year: Yup.string()
     .required("Years Employed is required"),
     month: Yup.string()
@@ -71,15 +57,15 @@ const CreateProfile = withFormik({
 
   handleSubmit(values, formikBag) {
    
-    formikBag.props.doCreateProfile(values)
+    formikBag.props.doEditProfile(values)
     .then(() => {formikBag.props.history.push("/")});
     console.log(values);
 
  
   }
-})(ProfileForm);
+})(EditProfileForm);
 
 export default connect(
   null,
-  { doCreateProfile }
-)(CreateProfile);
+  { doEditProfile }
+)(EditProfile);
