@@ -166,6 +166,9 @@ $light-blue: #d8e7ff;
 
     .ui.button {
       width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 }
