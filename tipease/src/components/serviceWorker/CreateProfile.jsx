@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
-import { doCreateAccount } from "../../store/actions/authActions";
+import { doCreateProfile } from "../../store/actions/authActions";
 
 function ProfileForm({ values, errors, touched }) {
     return (
@@ -45,40 +45,41 @@ function ProfileForm({ values, errors, touched }) {
   );
 }
 
-const RegistrationForm = withFormik({
-  mapPropsToValues({ email, password, cPassword, isServiceWorker }) {
+const CreateProfile = withFormik({
+  mapPropsToValues({ first, last, thumbnail, year, month, tagline }) {
     return {
-      email: email || "",
-      password: password || "",
-      cPassword: '' || "",
-      isServiceWorker: isServiceWorker || false
-    };
+      first: first || "",
+      last: last || "",
+      thumbnail: thumbnail || "",
+      year: year || "",
+      month: month || "",
+      tagline: tagline || "",
+      };
   },
   validationSchema: Yup.object().shape({
-    email: Yup.string()
-      .email("is not valid")
-      .required("is required"),
-    password: Yup.string()
-      .min(8, "Password must be 8 characters or longer")
-      .required("is required")
-      ,
-    cPassword: Yup.string().oneOf(
-      [Yup.ref("password"), null],
-      "Passwords must match!"
-    )
+    first: Yup.string()
+      .required("First Name is required"),
+    last: Yup.string()
+      .required("Last Name is required"),
+    year: Yup.string()
+    .required("Years Employed is required"),
+    month: Yup.string()
+      .required("Months Employed is required"),
+    tagline: Yup.string()
+    .required("Tagline is required"),
   }),
 
   handleSubmit(values, formikBag) {
    
-    formikBag.props.doCreateAccount(values)
-    .then(() => {formikBag.props.props.history.push("/login")});
-   console.log(values);
+    formikBag.props.doCreateProfile(values)
+    .then(() => {formikBag.props.history.push("/")});
+    console.log(values);
 
  
   }
-})(RegFrm);
+})(ProfileForm);
 
 export default connect(
   null,
-  { doCreateAccount }
-)(RegistrationForm);
+  { doCreateProfile }
+)(CreateProfile);
