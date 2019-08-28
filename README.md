@@ -23,3 +23,13 @@ If a customer wants to tip an employee with a card, it currently requires the ow
 - [morgan](https://www.npmjs.com/package/morgan)
 - [Jest](https://jestjs.io/)
 - [Supertest](https://www.npmjs.com/package/supertest)
+
+
+## How to View The Project
+
+You can visit the link provided in the description, or, if you'd like to fiddle around with the project, you can follow these steps: 
+
+1. Clone this repo.
+2. Inside your terminal, run `cd frontend/tipease`.
+3. Run `npm i && npm start`.
+4. Visit `localhost:3000` to view the project.
