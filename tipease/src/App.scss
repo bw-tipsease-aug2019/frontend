@@ -1,5 +1,5 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Fugaz+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Fugaz+One|Roboto&display=swap');
 
 // Variables
 $dark-purple: #8e40ce;
@@ -16,12 +16,10 @@ $dark-blue: #4286f4;
 $light-blue: #d8e7ff;
 
 .App {
+  background: $light-pink;
   text-align: center;
   width: 100%;
   margin: 0 auto;
-  background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url("https://images.unsplash.com/photo-1521017432531-fbd92d768814?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
-  background-repeat: no-repeat;
-  background-size: cover;
   font-family: 'fugaz one', sans-serif;
   height: 100%;
 
@@ -29,6 +27,14 @@ $light-blue: #d8e7ff;
 	color: #fff;
 	text-shadow: 2px 0px 4px $green;
   }
+}
+
+.coffee-shop-bg {
+  background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url("https://images.unsplash.com/photo-1521017432531-fbd92d768814?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 2rem 0;
 }
 
 .nav-bar {
@@ -72,7 +78,7 @@ $light-blue: #d8e7ff;
 
 
 .form-card {
-  margin: 2rem 0;
+  margin: 0;
 }
 
 .form {
@@ -131,7 +137,7 @@ $light-blue: #d8e7ff;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   width: 90%;
-  margin: 0 auto;
+  margin: 2rem auto;
 
   .workers-grid-item {
     border-radius: 5px;
@@ -149,6 +155,9 @@ $light-blue: #d8e7ff;
   justify-content: space-between;
   height: 500px;
   
+  p {
+    font-family: 'Roboto', sans-serif;
+  }
 
   .worker-info {
     flex: 1 0 auto;
