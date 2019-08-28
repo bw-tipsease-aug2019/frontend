@@ -11,35 +11,35 @@ export const setFilter = (filter) => {
 
 export const getWorkers = () => {
   return dispatch => {
-    /*dispatch({ type: types.WORKERS_START });
+    dispatch({ type: types.WORKERS_START });
     axiosWithAuth()
-      .get(`url`)
+      .get('/users/workers')
       .then(res => {
-        console.log(res);
-        dispatch({ type: types.GET_WORKERS_SUCCESS, payload: res.data });
+        console.log('workerData', res.data.users);
+        dispatch({ type: types.GET_WORKERS_SUCCESS, payload: res.data.users });
       })
       .catch(err => {
         dispatch({ type: types.WORKERS_FAIL, payload: err.response });
-      });*/
-      console.log('Hi', testData);
-      dispatch({ type: types.GET_WORKERS_SUCCESS, payload: testData});
+      });
+      // console.log('Hi', testData);
+      // dispatch({ type: types.GET_WORKERS_SUCCESS, payload: testData});
   };
 }
 
 export const getWorker = (id) => {
   let currWorkerTest = testData.filter(worker=>`${worker.id}`===id);
   return dispatch => {
-   /* dispatch({ type: types.WORKERS_START });
+   dispatch({ type: types.WORKERS_START });
     axiosWithAuth()
-      .get(`url/${id}`)
+      .get(`users/${id}`)
       .then(res => {
-        console.log(res);
-        dispatch({ type: types.GET_WORKER_SUCCESS, payload: res.data });
+        console.log('userbyid', res.data);
+        dispatch({ type: types.WORKERS_SUCCESS, payload: res.data });
       })
       .catch(err => {
         dispatch({ type: types.WORKERS_FAIL, payload: err.response });
-      });*/
-      dispatch({ type: types.GET_WORKER_SUCCESS, payload: currWorkerTest });
+      });
+      // dispatch({ type: types.GET_WORKER_SUCCESS, payload: currWorkerTest });
   };
 }
 

@@ -1,9 +1,3 @@
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/                            TO DO:                        
-/      ~ Create a worker page that will get a specific worker and
-/        display more detailed information:
-/
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getWorker } from "../../store/actions/workerActions";
@@ -21,7 +15,7 @@ const WorkerPage = props => {
   return (
     <CoffeeShopBg>
       <div className="worker-page">
-        <h1>{`${worker.name.first} ${worker.name.last}`}</h1>
+        <h1>{`${worker.firstName} ${worker.lastName}`}</h1>
         <img
           className="worker-thumbnail"
           alt="Worker Photo Here"
@@ -32,8 +26,8 @@ const WorkerPage = props => {
         <p>{worker.tagline}</p>
         <p>Employed for</p>
         <p>
-          {worker.durationEmployed.year} years and{" "}
-          {worker.durationEmployed.month} months.
+          {worker.durationYear} years and{" "}
+          {worker.durationMonth} months.
         </p>
       </div>
     </CoffeeShopBg>

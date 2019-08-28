@@ -4,11 +4,12 @@ const initialState = {
   workers: [],
   currentWorker: {
     id: 0,
-    name: { first: '', last: '' },
-    thumbnail: '',
+firstName:'',
+lastName: '',
     company: '',
     role: '',
-    durationEmployed: { year: 0, month: 0 },
+    durationYears:'',
+    durationMonths:'',
     tagline: '',
     tips: [],
 

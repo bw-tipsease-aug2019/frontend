@@ -23,7 +23,7 @@ const WorkerCard = props => {
     <div className="worker-card">
       <div className="worker-info">
         <h2>
-          {props.worker.name.first} {props.worker.name.last}
+          {props.worker.firstName} {props.worker.lastName}
         </h2>
         <img
           className="worker-thumbnail"
@@ -36,8 +36,8 @@ const WorkerCard = props => {
           <p>{props.worker.tagline}</p>
           <p>Employed for</p>
           <p>
-            {props.worker.durationEmployed.year} years and{" "}
-            {props.worker.durationEmployed.month} months.
+            {props.worker.durationYear} years and{" "}
+            {props.worker.durationMonth} months.
           </p>
         </div>
       </div>
