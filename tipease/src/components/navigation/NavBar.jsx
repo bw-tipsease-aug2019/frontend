@@ -23,7 +23,11 @@ export default function NavBar() {
           <NavLink to="/">tipsease</NavLink>
         </div>
         <div className="nav-links">
-          <NavLink to="/workers/tips">view tips</NavLink>
+
+          {localStorage.getItem('serviceWorker') === 'true' && (
+            <NavLink to="/workers/tips">view tips</NavLink>
+          )}
+
           {!localStorage.getItem("token") ? (
             <>
               <NavLink to="/login">login</NavLink>{" "}
