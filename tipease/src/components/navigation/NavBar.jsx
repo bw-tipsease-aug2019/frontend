@@ -35,13 +35,13 @@ export default function NavBar() {
             <>
               <Link className="nav-link" to="/login">
                 Login
-              </Link>{" "}
+              </Link>
               <Link className="nav-link" to="/register">
                 Create Account
               </Link>
             </>
           ) : (
-            <Link to="/" onClick={() => logout()}>
+            <Link className="nav-link" to="/" onClick={() => logout()}>
               Logout
             </Link>
           )}
