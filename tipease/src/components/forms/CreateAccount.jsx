@@ -3,44 +3,53 @@ import { connect } from "react-redux";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { doCreateAccount } from "../../store/actions/authActions";
+import CoffeeShopBg from "../CoffeeShopBg";
+import { Link } from "react-router-dom";
 
 function RegFrm({ values, errors, touched }) {
     return (
-    <div className="form-card">
-      <h1>Create an Account</h1>
-      <Form className="ui form">
-        <div className="field">
-            {touched.email && errors.email && <p className="error">{errors.email}</p>}
-            <Field type="email" name="email" placeholder="Email" />
-        </div>
-        <div className="field">
-            {touched.password && errors.password && <p className="error">{errors.password}</p>}
-            <Field type="password" name="password" placeholder="Password" />
-        </div>
-        <div className="field">
-            {touched.cPassword && errors.cPassword && <p className="error">{errors.cPassword}</p>}
-            <Field
-              type="password"
-              name="cPassword"
-              placeholder="Confirm Password"
-            />
-        </div>
-        <div className="field">
-          <label htmlFor="isServiceWorker">
-            Check if you are a service worker
+    <CoffeeShopBg>
+      <div className="form-card">
+        <h1>Create an Account</h1>
+        <Form className="ui form">
+          <div className="field">
+              <Field type="email" name="email" placeholder="Email" />
+              {touched.email && errors.email && <p className="error">{errors.email}</p>}
+          </div>
+          <div className="field">
+              <Field type="password" name="password" placeholder="Password" />
+              {touched.password && errors.password && <p className="error">{errors.password}</p>}
+          </div>
+          <div className="field">
+              <Field
+                type="password"
+                name="cPassword"
+                placeholder="Confirm Password"
+              />
+              {touched.cPassword && errors.cPassword && <p className="error">{errors.cPassword}</p>}
+          </div>
+          <div className="field">
+            <label htmlFor="isServiceWorker">
+              <div className="is-service-worker">
+              <p>Are you a service worker?</p>
+              <Field type="checkbox" name="isServiceWorker" checked={values.isServiceWorker} />
+              </div>
+            </label>
             {touched.isServiceWorker && errors.isServiceWorker && <p className="error">{errors.isServiceWorker}</p>}
-            <Field type="checkbox" name="isServiceWorker" checked={values.isServiceWorker} />
-          </label>
-        </div>
-        {/* disabled={isSubmitting}  ***Removed from submit button for testing***/}
-        <button className="ui button" type="submit">
-          Submit
-        </button>
-        <button className="ui button" type="reset">
-          Reset Form
-        </button>
-      </Form>
-    </div>
+          </div>
+          {/* disabled={isSubmitting}  ***Removed from submit button for testing***/}
+          <div className="form-buttons">
+            <button className="ui button" type="submit">
+              Submit
+            </button>
+            <button className="ui button" type="reset">
+              Reset Form
+            </button>
+          </div>
+        </Form>
+          <p>Already a member? <Link to='/login'>Sign in</Link></p>
+      </div>
+    </CoffeeShopBg>
   );
 }
 

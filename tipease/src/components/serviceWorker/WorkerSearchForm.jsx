@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { useDispatch } from 'react-redux';
 import { setFilter } from '../../store/actions/workerActions';
 
+import CoffeeShopBg from "../CoffeeShopBg"
+
 
 function SearchFrm(props) {
   const dispatch = useDispatch();
@@ -25,36 +27,38 @@ function SearchFrm(props) {
   }
 
   return (
-    <div className="form-card">
-      <h1 className="worker-search">Search</h1>
-      <form className="ui form" onSubmit={handleSubmit}>
-        <div className="field">
-          <select name="company" onChange={handleChange}>
-            <option value="select" defaultValue>Select A Company...</option>
-            {props.companyNames.map((name,i)=>{
-              return (
-                <option key={i} value={`${name}`}>{`${name}`}</option>
-              );
-            })}
-          </select>
-        </div>
-        <div className="field">
-          <select name="role" onChange={handleChange}>
-            <option value="select" defaultValue>Select A Role...</option>
-            <option value="Server">Server</option>
-            <option value="Bellhop">Bellhop</option>
-            <option value="Valet">Valet</option>
-          </select>
-        </div>
+    <CoffeeShopBg>
+      <div className="form-card">
+        <h1 className="worker-search">Search</h1>
+        <form className="ui form" onSubmit={handleSubmit}>
+          <div className="field">
+            <select name="company" onChange={handleChange}>
+              <option value="select" defaultValue>Select A Company...</option>
+              {props.companyNames.map((name,i)=>{
+                return (
+                  <option key={i} value={`${name}`}>{`${name}`}</option>
+                );
+              })}
+            </select>
+          </div>
+          <div className="field">
+            <select name="role" onChange={handleChange}>
+              <option value="select" defaultValue>Select A Role...</option>
+              <option value="Server">Server</option>
+              <option value="Bellhop">Bellhop</option>
+              <option value="Valet">Valet</option>
+            </select>
+          </div>
 
-        <div className="field">
-          <input className="worker-search" type="text" name="name" placeholder="Enter the workers name" value={values.name} onChange={handleChange} />
-        </div>
-        <button className="ui button" type="submit">
-          Search
-        </button>
-      </form>
-    </div>
+          <div className="field">
+            <input className="worker-search" type="text" name="name" placeholder="Enter the workers name" value={values.name} onChange={handleChange} />
+          </div>
+          <button className="ui button" type="submit">
+            Search
+          </button>
+        </form>
+      </div>
+    </CoffeeShopBg>
   );
 }
 export default SearchFrm;
