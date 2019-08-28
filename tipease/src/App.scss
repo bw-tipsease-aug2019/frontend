@@ -79,6 +79,19 @@ $light-blue: #d8e7ff;
 
 .form-card {
   margin: 0;
+
+  a {
+    color: $light-pink;
+
+    &:hover {
+      color: $dark-pink;
+    }
+  }
+  
+  p {
+    color: white;
+    margin: 1.5rem 0;
+  }
 }
 
 .form {
@@ -100,6 +113,17 @@ $light-blue: #d8e7ff;
 
     .worker-search {
       border: 2px solid $green !important;
+    }
+
+    .is-service-worker {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      p {
+        margin: 0 .75rem 0 0;
+      }
+      
     }
   }
   
