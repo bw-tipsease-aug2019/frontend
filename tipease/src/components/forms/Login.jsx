@@ -41,7 +41,7 @@ const LoginForm = withFormik({
     email: Yup.string()
       .required("is required")
       .email("Email is not Valid"),
-    password: Yup.string().required("is required")
+    password: Yup.string().required("Password is required")
   }),
 
   handleSubmit(values, formikBag) {
