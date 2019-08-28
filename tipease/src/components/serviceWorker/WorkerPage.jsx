@@ -8,6 +8,8 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getWorker } from "../../store/actions/workerActions";
 import "../../App.scss";
+import CoffeeShopBg from "../CoffeeShopBg";
+
 const WorkerPage = props => {
   const worker = useSelector(state => state.workerReducer.currentWorker);
   const dispatch = useDispatch();
@@ -17,7 +19,7 @@ const WorkerPage = props => {
   }, []);
 
   return (
-    <>
+    <CoffeeShopBg>
       <div className="worker-page">
         <h1>{`${worker.name.first} ${worker.name.last}`}</h1>
         <img
@@ -33,9 +35,8 @@ const WorkerPage = props => {
           {worker.durationEmployed.year} years and{" "}
           {worker.durationEmployed.month} months.
         </p>
-        <h2>Tips: </h2>
       </div>
-    </>
+    </CoffeeShopBg>
   );
 };
 
