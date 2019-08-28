@@ -10,11 +10,15 @@ function LogFrm({ errors, touched }) {
       <h1>Login</h1>
       <Form className="ui form">
         <div className="field">
-          {touched.email && errors.email && <p className="error">{errors.email}</p>}
+          {touched.email && errors.email && (
+            <p className="error">{errors.email}</p>
+          )}
           <Field type="text" name="email" placeholder="Email" />
         </div>
         <div className="field">
-          {touched.password && errors.password && <p className="error">{errors.password}</p>}
+          {touched.password && errors.password && (
+            <p className="error">{errors.password}</p>
+          )}
           <Field type="password" name="password" placeholder="Password" />
         </div>
         <button className="ui button" type="submit" onClick={() => {}}>
@@ -43,6 +47,7 @@ const LoginForm = withFormik({
   handleSubmit(values, formikBag) {
     formikBag.props.doSignIn(values).then(() => {
       formikBag.props.history.push("/");
+      window.location.reload();
     });
   }
 })(LogFrm);
