@@ -14,10 +14,10 @@ const Tips = props => {
         props.tips.map(tip => (
             <div className="tip-card">
                 <div className="tip-card-amount">
-                  <p>{`Tip Amount: $${tip.tipAmount}`}</p>
+                  <p>${tip.tipAmount}</p>
                 </div>
                 <div className="tip-card-title">
-                  <p>{`Comment: ${tip.comment}`}</p>
+                  <p>{tip.comment}</p>
                 </div>
             </div>
         ))}
