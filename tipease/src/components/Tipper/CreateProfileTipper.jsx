@@ -10,12 +10,12 @@ function ProfileFormTipper({ values, errors, touched }) {
       <h1>Create Your Service Worker Profile</h1>
       <Form className="ui form">
         <div className="field">
-            {touched.first && errors.first && <p>{errors.first}</p>}
             <Field type="text" name="first" placeholder="First Name" />
+            {touched.first && errors.first && <p>{errors.first}</p>}
         </div>
         <div className="field">
-            {touched.last && errors.last && <p>{errors.last}</p>}
             <Field type="text" name="last" placeholder="Last Name" />
+            {touched.last && errors.last && <p>{errors.last}</p>}
         </div>
         <button className="ui button" type="submit">
           Submit
