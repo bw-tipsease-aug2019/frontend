@@ -22,6 +22,7 @@ function App() {
       <Route path="/tip/:id" component={TipForm} />
       <PrivateRoute path='/workers/tips' component={Tips} />
       <Route path='/profile' component={Profile} />
+      <Route path='/edit-profile' component={EditProfile} />
     </div>
   );
 }

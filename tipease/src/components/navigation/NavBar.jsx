@@ -34,10 +34,15 @@ export default function NavBar() {
               <NavLink to="/register">register</NavLink>
             </>
           ) : (
+            <>
+              <NavLink to="/edit-profile">
+                edit profile
+              </NavLink>
               <Link to="/" onClick={() => logout()}>
                 logout
               </Link>
-            )}
+            </>
+          )}
         </div>
       </nav>
     </div>
