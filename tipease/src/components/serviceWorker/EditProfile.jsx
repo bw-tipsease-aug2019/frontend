@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
-import { doCreateProfile } from "../../store/actions/authActions";
+import { doEditProfile } from "../../store/actions/authActions";
 import CoffeeShopBg from "../CoffeeShopBg";
 
 function ProfileFormEdit({ values, errors, touched }) {
@@ -93,7 +93,7 @@ const EditProfile = withFormik({
       password: password || "",
       cPassword: cPassword || "",
       isServiceWorker: isServiceWorker || false
-      };
+    };
   },
   validationSchema: Yup.object().shape({
     durationYears: Yup.number(),
@@ -109,16 +109,17 @@ const EditProfile = withFormik({
   }),
 
   handleSubmit(values, formikBag) {
-   
-    formikBag.props.doCreateProfile(values)
+    formikBag.props.doEditProfile(
+      Object.fromEntries(
+        Object.entries(values).filter(([key, value]) => value !== "")
+      )
+    )
     .then(() => {formikBag.props.history.push("/")});
-    console.log(values);
-
- 
   }
 })(ProfileFormEdit);
 
+
 export default connect(
   null,
-  { doCreateProfile }
+  { doEditProfile }
 )(EditProfile);
