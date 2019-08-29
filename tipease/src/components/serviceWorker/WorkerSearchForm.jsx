@@ -45,8 +45,11 @@ function SearchFrm(props) {
             <select name="role" onChange={handleChange}>
               <option value="select" defaultValue>Select A Role...</option>
               <option value="Server">Server</option>
-              <option value="Bellhop">Bellhop</option>
-              <option value="Valet">Valet</option>
+              <option value="Dealer">Dealer</option>
+              <option value="Service">Service</option>
+              <option value="Bar Tender">Bar Tender</option>
+              <option value="Hair Dresser">Hair Dresser</option>
+
             </select>
           </div>
 

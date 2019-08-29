@@ -36,8 +36,8 @@ const WorkerCard = props => {
           <p>{props.worker.tagline}</p>
           <p>Employed for</p>
           <p>
-            {props.worker.durationYear} years and{" "}
-            {props.worker.durationMonth} months.
+            {props.worker.durationYears} years and{" "}
+            {props.worker.durationMonths} months.
           </p>
         </div>
       </div>
