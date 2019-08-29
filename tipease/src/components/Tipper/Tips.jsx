@@ -9,24 +9,19 @@ const Tips = props => {
   
 
   return (
-    <>
+    <div className="tip-card-wrapper">
       {props.tips &&
         props.tips.map(tip => (
-          <>
-            <div className="tip-card-wrapper">
-              <div className="tip-card">
+            <div className="tip-card">
                 <div className="tip-card-amount">
                   <p>{`Tip Amount: $${tip.tipAmount}`}</p>
                 </div>
                 <div className="tip-card-title">
                   <p>{`Comment: ${tip.comment}`}</p>
                 </div>
-              </div>
             </div>
-  
-          </>
         ))}
-    </>
+    </div>
   );
 };
 
