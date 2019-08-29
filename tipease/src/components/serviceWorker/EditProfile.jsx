@@ -2,24 +2,32 @@ import React from "react";
 import { connect } from "react-redux";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
-import { doEditProfile } from "../../store/actions/authActions";
+import { doCreateProfile } from "../../store/actions/authActions";
 
-function EditProfileForm({ values, errors, touched }) {
+function ProfileFormEdit({ values, errors, touched }) {
     return (
     <div className="form-card">
-      <h1>Edit Your Service Worker Profile</h1>
+      <h1>Create Your Service Worker Profile</h1>
       <Form className="ui form">
+        <div className="field">
+            {touched.company && errors.company && <p>{errors.company}</p>}
+            <Field type="text" name="company" placeholder="Company" />
+        </div>
+        <div className="field">
+            {touched.role && errors.role && <p>{errors.role}</p>}
+            <Field type="text" name="role" placeholder="Role" />
+        </div>
         <div className="field">
             {touched.thumbnail && errors.thumbnail && <p>{errors.thumbnail}</p>}
             <Field type="text" name="thumbnail" placeholder="Thumbnail URL" />
         </div>
         <div className="field">
-            {touched.year && errors.year && <p>{errors.year}</p>}
-            <Field type="text" name="year" placeholder="Years Employed" />
+            {touched.durationYears && errors.durationYears && <p>{errors.durationYears}</p>}
+            <Field type="text" name="durationYears" placeholder="Years Employed" />
         </div>
         <div className="field">
-            {touched.month && errors.month && <p>{errors.month}</p>}
-            <Field type="text" name="month" placeholder="Months Employed" />
+            {touched.durationMonths && errors.durationMonths && <p>{errors.durationMonths}</p>}
+            <Field type="text" name="durationMonths" placeholder="Months Employed" />
         </div>
         <div className="field">
             {touched.tagline && errors.tagline && <p>{errors.tagline}</p>}
@@ -38,34 +46,35 @@ function EditProfileForm({ values, errors, touched }) {
 }
 
 const EditProfile = withFormik({
-  mapPropsToValues({ thumbnail, year, month, tagline }) {
+  mapPropsToValues({ thumbnail, durationYears, durationMonths, tagline, company, role }) {
     return {
       thumbnail: thumbnail || "",
-      year: year || "",
-      month: month || "",
+      durationYears: durationYears || "",
+      durationMonths: durationMonths || "",
       tagline: tagline || "",
+      company: company || "",
+      role: role || ""
       };
   },
   validationSchema: Yup.object().shape({
-    year: Yup.string()
-    .required("Years Employed is required"),
-    month: Yup.string()
-      .required("Months Employed is required"),
-    tagline: Yup.string()
-    .required("Tagline is required"),
+    durationYears: Yup.number(),
+    durationMonths: Yup.number(),
+    tagline: Yup.string(),
+    company: Yup.string(),
+    role: Yup.string(),
   }),
 
   handleSubmit(values, formikBag) {
    
-    formikBag.props.doEditProfile(values)
+    formikBag.props.doCreateProfile(values)
     .then(() => {formikBag.props.history.push("/")});
     console.log(values);
 
  
   }
-})(EditProfileForm);
+})(ProfileFormEdit);
 
 export default connect(
   null,
-  { doEditProfile }
+  { doCreateProfile }
 )(EditProfile);
