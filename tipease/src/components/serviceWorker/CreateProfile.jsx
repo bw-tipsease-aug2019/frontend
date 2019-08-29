@@ -10,36 +10,36 @@ function ProfileForm({ values, errors, touched }) {
       <h1>Create Your Service Worker Profile</h1>
       <Form className="ui form">
         <div className="field">
-            {touched.firstName && errors.firstName && <p>{errors.firstName}</p>}
             <Field type="text" name="firstName" placeholder="First Name" />
+            {touched.firstName && errors.firstName && <p>{errors.firstName}</p>}
         </div>
         <div className="field">
-            {touched.lastName && errors.lastName && <p>{errors.lastName}</p>}
             <Field type="text" name="lastName" placeholder="Last Name" />
+            {touched.lastName && errors.lastName && <p>{errors.lastName}</p>}
         </div>
         <div className="field">
-            {touched.company && errors.company && <p>{errors.company}</p>}
             <Field type="text" name="company" placeholder="Company" />
+            {touched.company && errors.company && <p>{errors.company}</p>}
         </div>
         <div className="field">
-            {touched.role && errors.role && <p>{errors.role}</p>}
             <Field type="text" name="role" placeholder="Role" />
+            {touched.role && errors.role && <p>{errors.role}</p>}
         </div>
         <div className="field">
-            {touched.thumbnail && errors.thumbnail && <p>{errors.thumbnail}</p>}
             <Field type="text" name="thumbnail" placeholder="Thumbnail URL" />
+            {touched.thumbnail && errors.thumbnail && <p>{errors.thumbnail}</p>}
         </div>
         <div className="field">
-            {touched.durationYears && errors.durationYears && <p>{errors.durationYears}</p>}
             <Field type="text" name="durationYears" placeholder="Years Employed" />
+            {touched.durationYears && errors.durationYears && <p>{errors.durationYears}</p>}
         </div>
         <div className="field">
-            {touched.durationMonths && errors.durationMonths && <p>{errors.durationMonths}</p>}
             <Field type="text" name="durationMonths" placeholder="Months Employed" />
+            {touched.durationMonths && errors.durationMonths && <p>{errors.durationMonths}</p>}
         </div>
         <div className="field">
-            {touched.tagline && errors.tagline && <p>{errors.tagline}</p>}
             <Field type="text" name="tagline" placeholder="Tagline" />
+            {touched.tagline && errors.tagline && <p>{errors.tagline}</p>}
         </div>
         
         <button className="ui button" type="submit">
