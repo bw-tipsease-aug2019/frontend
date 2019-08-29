@@ -10,24 +10,32 @@ function ProfileForm({ values, errors, touched }) {
       <h1>Create Your Service Worker Profile</h1>
       <Form className="ui form">
         <div className="field">
-            {touched.first && errors.first && <p>{errors.first}</p>}
-            <Field type="text" name="first" placeholder="First Name" />
+            {touched.firstName && errors.firstName && <p>{errors.firstName}</p>}
+            <Field type="text" name="firstName" placeholder="First Name" />
         </div>
         <div className="field">
-            {touched.last && errors.last && <p>{errors.last}</p>}
-            <Field type="text" name="last" placeholder="Last Name" />
+            {touched.lastName && errors.lastName && <p>{errors.lastName}</p>}
+            <Field type="text" name="lastName" placeholder="Last Name" />
+        </div>
+        <div className="field">
+            {touched.company && errors.company && <p>{errors.company}</p>}
+            <Field type="text" name="company" placeholder="Company" />
+        </div>
+        <div className="field">
+            {touched.role && errors.role && <p>{errors.role}</p>}
+            <Field type="text" name="role" placeholder="Role" />
         </div>
         <div className="field">
             {touched.thumbnail && errors.thumbnail && <p>{errors.thumbnail}</p>}
             <Field type="text" name="thumbnail" placeholder="Thumbnail URL" />
         </div>
         <div className="field">
-            {touched.year && errors.year && <p>{errors.year}</p>}
-            <Field type="text" name="year" placeholder="Years Employed" />
+            {touched.durationYears && errors.durationYears && <p>{errors.durationYears}</p>}
+            <Field type="text" name="durationYears" placeholder="Years Employed" />
         </div>
         <div className="field">
-            {touched.month && errors.month && <p>{errors.month}</p>}
-            <Field type="text" name="month" placeholder="Months Employed" />
+            {touched.durationMonths && errors.durationMonths && <p>{errors.durationMonths}</p>}
+            <Field type="text" name="durationMonths" placeholder="Months Employed" />
         </div>
         <div className="field">
             {touched.tagline && errors.tagline && <p>{errors.tagline}</p>}
@@ -46,27 +54,33 @@ function ProfileForm({ values, errors, touched }) {
 }
 
 const CreateProfile = withFormik({
-  mapPropsToValues({ first, last, thumbnail, year, month, tagline }) {
+  mapPropsToValues({ firstName, lastName, thumbnail, durationYears, durationMonths, tagline, company, role }) {
     return {
-      first: first || "",
-      last: last || "",
+      firstName: firstName || "",
+      lastName: lastName || "",
       thumbnail: thumbnail || "",
-      year: year || "",
-      month: month || "",
+      durationYears: durationYears || "",
+      durationMonths: durationMonths || "",
       tagline: tagline || "",
+      company: company || "",
+      role: role || ""
       };
   },
   validationSchema: Yup.object().shape({
-    first: Yup.string()
+    firstName: Yup.string()
       .required("First Name is required"),
-    last: Yup.string()
+    lastName: Yup.string()
       .required("Last Name is required"),
-    year: Yup.string()
+      durationYears: Yup.number()
     .required("Years Employed is required"),
-    month: Yup.string()
+    durationMonths: Yup.number()
       .required("Months Employed is required"),
     tagline: Yup.string()
     .required("Tagline is required"),
+    company: Yup.string()
+    .required('Company is required'),
+    role: Yup.string()
+    .required('Role is required'),
   }),
 
   handleSubmit(values, formikBag) {
