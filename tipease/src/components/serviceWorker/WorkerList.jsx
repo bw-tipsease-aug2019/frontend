@@ -33,7 +33,7 @@ const WorkerList = props => {
 
     if(filter.name){
       filteredWorkers = filteredWorkers.filter(worker=>{
-        const fullName = `${worker.name.first} ${worker.name.last}`
+        const fullName = `${worker.firstName} ${worker.lastName}`
         return (fullName.search(new RegExp(filter.name, "i")) === 0);
       });
     }
