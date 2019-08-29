@@ -3,11 +3,13 @@ import { types } from '../actions';
 
 export const getTipList = () => dispatch => {
     dispatch({ type: types.GET_TIPLIST_START});
+    const usrId = JSON.parse(localStorage.getItem('userid'))
+// console.log(usrId)
     return axiosWithAuth()
-      .get('/tips')
+      .get(`/users/${usrId}/tips`)
       .then(res => {
-        console.log('tips', res.data.tips)
-        dispatch({type: types.GET_TIPLIST_SUCCESS, payload: res.data.tips})
+        // console.log('tips', res.data)
+        dispatch({type: types.GET_TIPLIST_SUCCESS, payload: res.data})
       })
       .catch(err => {
         dispatch({type: types.GET_TIPLIST_FAIL, payload: err})
