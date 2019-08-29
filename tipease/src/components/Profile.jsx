@@ -6,11 +6,27 @@ const Profile = props => {
   useEffect(() => {
     props.doGetProfile();
   }, []);
-  
+
 
   return (
     <>
-      <h1>{props.userProfile && props.userProfile.firstName + " " + props.userProfile.lastName}</h1>
+      <h1>
+        Name:{" "}
+        {props.userProfile &&
+          props.userProfile.firstName + " " + props.userProfile.lastName}
+      </h1>
+      <img src={props.userProfile && props.userProfile.thumbnail} alt='User Picture'/>
+      <p>Company: {props.userProfile && props.userProfile.company}</p>
+      <p>Role: {props.userProfile && props.userProfile.role}</p>
+      <p>
+        Employed For:{" "}
+        {props.userProfile &&
+          props.userProfile.durationYears +
+            " years and " +
+            props.userProfile.durationMonths +
+            " months"}
+      </p>
+      <p>Tagline: {props.userProfile && props.userProfile.tagline}</p>
     </>
   );
 };
