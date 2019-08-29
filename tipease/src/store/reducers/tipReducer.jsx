@@ -20,7 +20,7 @@ export default (state = initialState, action) => {
     return{
       ...state,
       isloading: false,
-      tipList: action.payload,
+      tipList: payload,
       errors: null
     }
     case types.GET_TIPLIST_FAIL:
@@ -45,7 +45,10 @@ export default (state = initialState, action) => {
         tipList: postTipList
       }
       case types.POST_TIPLIST_FAIL:
-        return
+        return{
+          ...state,
+          errors: payload,
+        }
     default:
       return state;
   }

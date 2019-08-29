@@ -58,8 +58,8 @@ export default (state = initialState, action) => {
         isLoading: false,
         isAuth: true,
         isSuccess: true,
-        message: payload.message,
-        token: payload.token
+        user:payload,
+        
       };
     case types.LOGIN_FAIL:
       return {

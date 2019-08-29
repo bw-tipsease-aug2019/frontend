@@ -29,6 +29,7 @@ export const doSignIn = credentials => dispatch => {
             res =>{
                 console.log(res)
                 //set token 
+                localStorage.setItem('userid', (res.data.userid))
                 localStorage.setItem('token', (res.data.token))
                 localStorage.setItem('serviceWorker', (res.data.isServiceWorker))
                 dispatch ({ type: types.LOGIN_SUCCESS, payload: res.data})
@@ -85,11 +86,11 @@ export const doSignIn = credentials => dispatch => {
   
   };
 
-  export const doEditProfile = user => dispatch => {
+  export const doEditProfile = (id, user) => dispatch => {
 
     dispatch({ type: types.UPDATE_USER_START});
     return axiosWithAuth()
-      .put('/users/:id', user)
+      .put(`/users/${id}`, user)
       .then(
         res => {
           console.log(res)
