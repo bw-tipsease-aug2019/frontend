@@ -3,7 +3,7 @@ import { types } from "../actions";
 
 const initialState = {
   token: "",
-  message:'',
+  message: "",
   user: null,
   userProfile: null,
   isAuth: false,
@@ -58,15 +58,14 @@ export default (state = initialState, action) => {
         isLoading: false,
         isAuth: true,
         isSuccess: true,
-        user:payload,
-        
+        user: payload
       };
     case types.LOGIN_FAIL:
       return {
         ...state,
         errors: payload,
         isLoading: false,
-        token: ''
+        token: ""
       };
     //CREATE PROFILE
     case types.CREATE_PROFILE_START:
@@ -76,9 +75,8 @@ export default (state = initialState, action) => {
         isAuth: false,
         isSuccess: false,
         errors: null,
-        user: payload.user,
-        userProfile: {},
-        token: payload.token
+        user: payload,
+        userProfile: {}
       };
     case types.CREATE_PROFILE_SUCCESS:
       return {
@@ -87,9 +85,7 @@ export default (state = initialState, action) => {
         isAuth: false,
         isSuccess: true,
         errors: null,
-        user: payload.user,
-        userProfile: {},
-        token: payload.token
+        user: payload
       };
     case types.CREATE_PROFILE_FAIL:
       return {
@@ -97,10 +93,7 @@ export default (state = initialState, action) => {
         isLoading: false,
         isAuth: false,
         isSuccess: false,
-        errors: payload,
-        user: payload.user,
-        userProfile: {},
-        token: payload.token
+        errors: payload
       };
     // GET PROFILE
     case types.GET_USER_START:
@@ -119,6 +112,27 @@ export default (state = initialState, action) => {
         user: payload
       };
     case types.GET_USER_FAIL:
+      return {
+        ...state,
+        isLoading: false,
+        errors: payload
+      };
+    case types.GET_PROFILE_START:
+      return {
+        ...state,
+        isLoading: true,
+        isAuth: true,
+        isSuccess: false,
+        errors: null
+      };
+    case types.GET_PROFILE_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        isSuccess: true,
+        userProfile: payload
+      };
+    case types.GET_PROFILE_FAIL:
       return {
         ...state,
         isLoading: false,

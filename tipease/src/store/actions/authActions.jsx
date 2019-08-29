@@ -46,24 +46,25 @@ export const doSignIn = credentials => dispatch => {
 }
 
   
-  // export const doCreateProfile = newProfileDetails => dispatch =>{
-  //   dispatch({ type: types.CREATE_PROFILE_START});
-  //   return axiosWithAuth()
-  //   .post('needsEndpoint', newProfileDetails)
-  //   .then(
-  //     res => {
-  //       dispatch({ type: types.CREATE_PROFILE_SUCCESS, payload: {message: 'Profile was created successfully!'}});
-  //       console.log(res)
-  //     }
-  //   )
-  //   .catch(
-  //     err => {
-  //       dispatch({type: types.CREATE_PROFILE_FAIL, payload: err})
-  //        console.log(err.response)
-  //     } 
-  //   )
+  export const doCreateProfile = newProfileDetails => dispatch =>{
+    dispatch({ type: types.CREATE_PROFILE_START});
+    const usrId = JSON.parse(localStorage.getItem('userid'))
+    return axiosWithAuth()
+    .put(`/users/${usrId}`, newProfileDetails)
+    .then(
+      res => {
+        dispatch({ type: types.CREATE_PROFILE_SUCCESS, payload: {message: 'Profile was created successfully!'}});
+        console.log(res)
+      }
+    )
+    .catch(
+      err => {
+        dispatch({type: types.CREATE_PROFILE_FAIL, payload: err})
+         console.log(err.response)
+      } 
+    )
   
-  // };
+  };
 
   export const getUsers = data => dispatch => {
 
@@ -85,12 +86,32 @@ export const doSignIn = credentials => dispatch => {
       )
   
   };
+  export const doGetProfile = data => dispatch => {
 
+    dispatch({ type: types.GET_PROFILE_START});
+    const usrId = JSON.parse(localStorage.getItem('userid'))
+    return axiosWithAuth()
+      .get(`/users/${usrId}`, data)
+      .then(
+        res => {
+          console.log(res)
+          dispatch({type: types.GET_PROFILE_SUCCESS, payload: res.data});
+        }
+      )
+      .catch(
+        err => {
+          dispatch({type: types.GET_PROFILE_FAIL, payload: err})
+          console.log(err)
+        }
+      )
+  
+  };
   export const doEditProfile = (id, user) => dispatch => {
 
     dispatch({ type: types.UPDATE_USER_START});
+    const usrId = JSON.parse(localStorage.getItem('userid'))
     return axiosWithAuth()
-      .put(`/users/${id}`, user)
+      .put(`/users/${usrId}`, user)
       .then(
         res => {
           console.log(res)

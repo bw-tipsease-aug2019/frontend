@@ -15,8 +15,8 @@ export const getWorkers = () => {
     axiosWithAuth()
       .get('/users/workers')
       .then(res => {
-        console.log('workerData', res.data.users);
-        dispatch({ type: types.GET_WORKERS_SUCCESS, payload: res.data.users });
+        console.log('workerData', res.data);
+        dispatch({ type: types.GET_WORKERS_SUCCESS, payload: res.data});
       })
       .catch(err => {
         dispatch({ type: types.WORKERS_FAIL, payload: err.response });
