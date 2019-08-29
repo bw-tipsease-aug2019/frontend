@@ -7,7 +7,6 @@ const Tips = props => {
     props.getTipList();
   }, []);
   
-  const add = (a,b) => a + b 
 
   return (
     <>
