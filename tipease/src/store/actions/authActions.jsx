@@ -106,18 +106,15 @@ export const doSignIn = credentials => dispatch => {
       )
   
   };
-  export const doEditProfile = (id, user) => dispatch => {
+  export const doEditProfile = user => dispatch => {
 
     dispatch({ type: types.UPDATE_USER_START});
     const usrId = JSON.parse(localStorage.getItem('userid'))
     return axiosWithAuth()
       .put(`/users/${usrId}`, user)
-      .then(
-        res => {
-          console.log(res)
+      .then(res => {
           dispatch({type: types.UPDATE_USER_SUCCESS, payload: res.data.user});
-        }
-      )
+      })
       .catch(
         err => {
           dispatch({type: types.UPDATE_USER_FAIL, payload: err})
