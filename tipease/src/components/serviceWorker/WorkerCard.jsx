@@ -46,6 +46,7 @@ const WorkerCard = props => {
       {!localStorage.getItem("token") ? (
           <div
             className="ui button"
+            style={{width: "60%"}}
             onClick={() => {
               props.redirect(`/login`);
             }}
@@ -62,15 +63,6 @@ const WorkerCard = props => {
             Tip
           </div>
         )}
-
-        <div
-          className="ui button"
-          onClick={() => {
-            props.redirect(`/worker/${props.worker.id}`);
-          }}
-        >
-          More Info
-        </div>
       </div>
 
       
