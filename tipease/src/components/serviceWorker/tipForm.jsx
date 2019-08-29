@@ -21,7 +21,7 @@ function TipFrm(props) {
         
         <Form className="ui form">
           <div className="field">
-            {props.touched.amount && props.errors.amount && <p>{props.errors.amount}</p>}
+            {props.touched.tipAmount && props.errors.tipAmount && <p>{props.errors.tipAmount}</p>}
             <label htmlFor='amount'>Amount: </label>
             <Field type="number" name="tipAmount" placeholder="$5.00" />
           </div>
@@ -54,6 +54,7 @@ const TipForm = withFormik({
 
   validationSchema: Yup.object().shape({
     tipAmount: Yup.number()
+      .max(999999, "You can't tip too much")
       .required("is required")
   }),
 
